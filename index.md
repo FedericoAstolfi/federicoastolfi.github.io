@@ -5,7 +5,7 @@ title: Home
 
 <section class="hero">
     <h2>Hi, I'm Federico</h2>
-    <p>This is my personal website on GitHub Pages</p>
+    <p>This is my personal website. Currently I am a PhD student in Quantum Computing at CESQ, Unistra. In this section you can find my research-related projects.</p>
 </section>
 
 <section class="content">
