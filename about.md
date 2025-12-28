@@ -9,10 +9,6 @@ title: About
 
 Insert your personal presentation here.
 
-## Skills
-
-- backpropagation
-
 ## Interests
 
 Describe your interests and hobbies.
