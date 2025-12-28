@@ -11,7 +11,7 @@ title: Home
 <section class="content">
     <h3>Projects</h3>
     <div class="card">
-        <h4>Project 1</h4>
+        <h4>Pontryagin Maximum Principle for Rydberg-blockaded state-to-state transfers: A semi-analytic approach</h4>
         <p>Description of the first project</p>
         <p><a href="https://arxiv.org/abs/2512.13549" target="_blank">→ View Paper on arXiv</a></p>
     </div>
