@@ -7,19 +7,6 @@ title: Contact
 
 ## Get in Touch
 
-### Email
-your.email@example.com
-
 ### Social Media
 - [GitHub](https://github.com/federicoastolfi)
-- [LinkedIn](#)
-- [Twitter](#)
-
-### Contact Form
-
-<form class="contact-form">
-    <input type="text" placeholder="Name" required>
-    <input type="email" placeholder="Email" required>
-    <textarea placeholder="Message" rows="5" required></textarea>
-    <button type="submit">Send</button>
-</form>
+- [LinkedIn](https://www.linkedin.com/in/federico-astolfi-450250216)
