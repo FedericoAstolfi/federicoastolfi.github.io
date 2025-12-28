@@ -1,0 +1,58 @@
+---
+layout: default
+---
+
+<article class="post">
+    <header class="post-header">
+        <h1>{{ page.title }}</h1>
+        <p class="post-meta">
+            <time datetime="{{ page.date | date_to_xmlschema }}">
+                {{ page.date | date: "%B %d, %Y" }}
+            </time>
+            {% if page.author %}
+            • <span>{{ page.author }}</span>
+            {% endif %}
+        </p>
+    </header>
+
+    <div class="post-content">
+        {{ content }}
+    </div>
+</article>
+
+<style>
+.post {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.post-header {
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.post-header h1 {
+    color: #667eea;
+    margin-bottom: 0.5rem;
+}
+
+.post-meta {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.post-content {
+    line-height: 1.8;
+}
+
+.post-content h2 {
+    color: #764ba2;
+    margin-top: 2rem;
+}
+
+.post-content img {
+    max-width: 100%;
+    height: auto;
+}
+</style>
