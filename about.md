@@ -10,17 +10,14 @@ title: About
 
   <div style="flex: 1; min-width: 300px;">
     <h2 style="margin-top: 0;">My Story</h2>
-    <p>Insert your personal presentation here. Write about your background, education, and what you're passionate about.</p>
+    <p>Something about me.</p>
 
     <h3>Interests</h3>
-    <p>Describe your interests and hobbies here.</p>
+    <p>interest 1 and interest 2.</p>
   </div>
 </div>
 
 ## Skills
 
-- Quantum Computing
-- Optimal Control Theory
-- Python & Scientific Computing
-- LaTeX & Technical Writing
+- bla bla 
 
