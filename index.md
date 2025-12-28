@@ -13,6 +13,7 @@ title: Home
     <div class="card">
         <h4>Project 1</h4>
         <p>Description of the first project</p>
+        <p><a href="https://arxiv.org/abs/2512.13549" target="_blank">→ View Paper on arXiv</a></p>
     </div>
     <div class="card">
         <h4>Project 2</h4>

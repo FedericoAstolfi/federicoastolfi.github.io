@@ -11,10 +11,7 @@ Insert your personal presentation here.
 
 ## Skills
 
-- HTML & CSS
-- JavaScript
-- Python
-- Git & GitHub
+- backpropagation
 
 ## Interests
 
