@@ -9,7 +9,7 @@ title: About
   <img src="/images/profile.jpg" alt="Federico Astolfi" style="max-width: 300px; min-width: 250px; border-radius: 10px; flex-shrink: 0;">
 
   <div style="flex: 1; min-width: 300px;">
-    <h2 style="margin-top: 0;">My Story</h2>
+    <h2 style="margin-top: 0;">My Education</h2>
     <p>
     I am a second-year PhD student in Quantum Computing at the University of Strasbourg. I studied Mathematics first during by Bachelor's at University of Milano-Bicocca and then through my Master's at University Statale of Milano.
     </p>
