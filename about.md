@@ -23,7 +23,7 @@ title: About
 
 <div class="edu-timeline">
     <div class="edu-item">
-        <div class="edu-year">2023 – present</div>
+        <div class="edu-year">October 2024 – present</div>
         <div class="edu-content">
             <strong>PhD in Quantum Computing</strong><br>
             University of Strasbourg — CESQ<br>
@@ -31,7 +31,7 @@ title: About
         </div>
     </div>
     <div class="edu-item">
-        <div class="edu-year">2020 – 2023</div>
+        <div class="edu-year">September 2021 – February 2024</div>
         <div class="edu-content">
             <strong>MSc in Mathematics</strong><br>
             Università degli Studi di Milano (Statale)<br>
@@ -39,7 +39,7 @@ title: About
         </div>
     </div>
     <div class="edu-item">
-        <div class="edu-year">2017 – 2020</div>
+        <div class="edu-year"> September 2018 – July 2021</div>
         <div class="edu-content">
             <strong>BSc in Mathematics</strong><br>
             Università degli Studi di Milano-Bicocca
