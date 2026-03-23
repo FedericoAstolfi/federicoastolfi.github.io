@@ -6,8 +6,16 @@ author: Federico Astolfi
 categories: blog introduction
 ---
 
-Nothing to be blogged for the moment. Stay tuned.
+This blog is a space where I plan to write about things I find interesting — quantum computing, mathematics, and occasionally life as a PhD student.
 
-## About This Blog
+## What to expect
 
-I'll be sharing bla bla and bla.
+I intend to write posts about:
+
+- **Research notes** — ideas, results, and open questions from my work in quantum optimal control and quantum error correction
+- **Math I like** — topics in differential geometry, Lie groups, and wherever curiosity takes me
+- **PhD life** — honest reflections on the process of doing research
+
+Posts will be irregular by nature. Research is not a clockwork activity.
+
+Stay tuned.

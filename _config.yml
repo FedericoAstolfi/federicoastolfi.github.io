@@ -1,7 +1,6 @@
 # Site settings
 title: Federico Astolfi
-email: your.email@example.com
-description: My personal website on GitHub Pages
+description: PhD student in Quantum Computing at CESQ, University of Strasbourg
 baseurl: "" # Leave empty for username.github.io
 url: "https://federicoastolfi.github.io"
 
@@ -38,6 +37,5 @@ defaults:
       layout: "default"
 
 # Social links
-github_username: federicoastolfi
-# linkedin_username: your-linkedin
-# twitter_username: your-twitter
+github_username: FedericoAstolfi
+linkedin_username: federico-astolfi-450250216

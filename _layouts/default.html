@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }} - {{ site.title }}</title>
+    <meta name="description" content="{{ page.description | default: site.description }}">
     <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
 
     <!-- MathJax for LaTeX support -->
@@ -23,12 +24,12 @@
 </head>
 <body>
     <header>
-        <h1>{{ site.title }}</h1>
+        <h1><a href="{{ '/' | relative_url }}" style="color: white; text-decoration: none;">{{ site.title }}</a></h1>
         <nav>
-            <a href="{{ '/' | relative_url }}">Home</a>
-            <a href="{{ '/about' | relative_url }}">About</a>
-            <a href="{{ '/blog' | relative_url }}">Blog</a>
-            <a href="{{ '/contact' | relative_url }}">Contact</a>
+            <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="nav-active"{% endif %}>Home</a>
+            <a href="{{ '/about' | relative_url }}" {% if page.url contains '/about' %}class="nav-active"{% endif %}>About</a>
+            <a href="{{ '/blog' | relative_url }}" {% if page.url contains '/blog' %}class="nav-active"{% endif %}>Blog</a>
+            <a href="{{ '/contact' | relative_url }}" {% if page.url contains '/contact' %}class="nav-active"{% endif %}>Contact</a>
         </nav>
     </header>
 
@@ -37,7 +38,12 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 {{ site.title }}. All rights reserved.</p>
+        <div class="footer-social">
+            <a href="https://github.com/FedericoAstolfi" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/federico-astolfi-450250216" target="_blank">LinkedIn</a>
+            <a href="https://arxiv.org/search/?query=astolfi+federico&searchtype=author" target="_blank">arXiv</a>
+        </div>
+        <p>&copy; 2026 {{ site.title }}</p>
     </footer>
 </body>
 </html>
