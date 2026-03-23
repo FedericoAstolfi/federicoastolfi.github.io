@@ -52,10 +52,7 @@ title: About
 <div class="skills-grid">
     <div class="skill-tag">Quantum Optimal Control</div>
     <div class="skill-tag">Quantum Error Correction</div>
-    <div class="skill-tag">Pontryagin Maximum Principle</div>
     <div class="skill-tag">Python</div>
-    <div class="skill-tag">NumPy / SciPy</div>
     <div class="skill-tag">Differential Geometry</div>
     <div class="skill-tag">Lie Groups</div>
-    <div class="skill-tag">LaTeX</div>
 </div>
