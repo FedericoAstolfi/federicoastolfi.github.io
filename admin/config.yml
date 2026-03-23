@@ -1,0 +1,44 @@
+backend:
+  name: github
+  repo: FedericoAstolfi/federicoastolfi.github.io
+  branch: main
+  auth_type: pkce
+  app_id: Ov23liJEVBBWVA6lytSN
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "posts"
+    label: "Blog Posts"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Author", name: "author", widget: "string", default: "Federico Astolfi" }
+      - { label: "Categories", name: "categories", widget: "string", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "about"
+        label: "About"
+        file: "about.md"
+        fields:
+          - { label: "Title", name: "title", widget: "hidden", default: "About" }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - name: "contact"
+        label: "Contact"
+        file: "contact.md"
+        fields:
+          - { label: "Title", name: "title", widget: "hidden", default: "Contact" }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - name: "home"
+        label: "Home"
+        file: "index.md"
+        fields:
+          - { label: "Title", name: "title", widget: "hidden", default: "Home" }
+          - { label: "Body", name: "body", widget: "markdown" }
