@@ -1,0 +1,56 @@
+content:
+  - name: posts
+    label: Blog Posts
+    type: collection
+    path: _posts
+    view:
+      fields: [title, date]
+    fields:
+      - name: title
+        label: Titolo
+        type: string
+      - name: date
+        label: Data
+        type: date
+      - name: author
+        label: Autore
+        type: string
+        default: Federico Astolfi
+      - name: categories
+        label: Categorie
+        type: string
+        required: false
+      - name: body
+        label: Testo
+        type: rich-text
+
+  - name: about
+    label: About
+    type: file
+    path: about.md
+    fields:
+      - name: body
+        label: Contenuto
+        type: rich-text
+
+  - name: contact
+    label: Contact
+    type: file
+    path: contact.md
+    fields:
+      - name: body
+        label: Contenuto
+        type: rich-text
+
+  - name: home
+    label: Home
+    type: file
+    path: index.md
+    fields:
+      - name: body
+        label: Contenuto
+        type: rich-text
+
+media:
+  input: images
+  output: /images
