@@ -1,10 +1,10 @@
 ---
-layout: default
 title: Home
+layout: default
 ---
 
 <section class="hero">
-    <h2>Hi, I'm Federico</h2>
+    <h2>Hi, welcome in my web space!</h2>
     <p>PhD student in Quantum Computing at <a href="https://www.cesq.eu/" target="_blank">CESQ</a>, University of Strasbourg. I work at the intersection of Quantum Optimal Control and Quantum Error Correction, with a background in pure Mathematics.</p>
     <div class="hero-links">
         <a href="/about" class="hero-btn">About me</a>
