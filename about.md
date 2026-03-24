@@ -1,6 +1,6 @@
 ---
-layout: default
 title: About
+layout: default
 ---
 
 # About Me
@@ -11,11 +11,11 @@ title: About
   <div style="flex: 1; min-width: 300px;">
     <h2 style="margin-top: 0;">My Story</h2>
     <p>
-    I am a second-year PhD student in Quantum Computing at the University of Strasbourg. I was born in Milan and raised in Cinisello Balsamo. During highschool I attended classical studies and spent too many afternoons in the swimmingpool. Afterwards I was lured by curiosity into the realms of Mathematics, which I studied during by Bachelor's at University of Milano-Bicocca and through my Master's at University Statale of Milano. Manifolds and homology could summarize the study of those years, both as triggers for my interest and as protagonists of my books. After graduation I spent less than a year in consultancy, as test engineer and then I resolved myself to start a PhD. Now I am mainly concerned with aspects of Quantum Optimal Control and Quantum Error Correction.
+    I am a second-year PhD student in Quantum Computing at the University of Strasbourg. I was born in Milan and raised in Cinisello Balsamo. During highschool I attended classical studies and spent too many afternoons in the swimmingpool. Afterwards I was lured by curiosity into the realms of Mathematics, which I studied during by Bachelor's at University of Milano-Bicocca and through my Master's at University Statale of Milano. Manifolds and homology could summarize the study of those years, both as triggers for my interest and as protagonists of my books. After graduation I spent less than a year in consultancy, as test engineer, and then I resolved myself to start a PhD. Now I am mainly concerned with aspects of Quantum Optimal Control and Quantum Error Correction.
     </p>
 
     <h3>Interests</h3>
-    <p>Mathematics — especially differential geometry and topology. Quantum physics and the theory behind quantum computing. Swimming, which has been a constant companion since childhood. Classical literature and languages from my <em>liceo classico</em> days.</p>
+    <p>Miscellanea</p>
   </div>
 </div>
 
