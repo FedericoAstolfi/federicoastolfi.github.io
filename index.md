@@ -8,7 +8,7 @@ title: Home
     <p>PhD student in Quantum Computing at <a href="https://www.cesq.eu/" target="_blank">CESQ</a>, University of Strasbourg. I work at the intersection of Quantum Optimal Control and Quantum Error Correction, with a background in pure Mathematics.</p>
     <div class="hero-links">
         <a href="/about" class="hero-btn">About me</a>
-        <a href="https://github.com/FedericoAstolfi" target="_blank" class="hero-btn hero-btn-outline">GitHub</a>
+
         <a href="https://www.linkedin.com/in/federico-astolfi-450250216" target="_blank" class="hero-btn hero-btn-outline">LinkedIn</a>
     </div>
 </section>
