@@ -333,9 +333,12 @@ main {
 .edu-year {
     font-weight: 700;
     color: #1e3f70;
-    min-width: 110px;
-    font-size: 0.9rem;
+    width: 150px;
+    min-width: 150px;
+    flex-shrink: 0;
+    font-size: 0.88rem;
     padding-top: 2px;
+    line-height: 1.5;
 }
 
 .edu-content {
