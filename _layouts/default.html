@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }} - {{ site.title }}</title>
     <meta name="description" content="{{ page.description | default: site.description }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
 
     <!-- MathJax for LaTeX support -->
@@ -45,5 +48,37 @@
         </div>
         <p>&copy; 2026 {{ site.title }}</p>
     </footer>
+    <script>
+    // Scroll reveal
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.card, .edu-item, .skill-tag, .social-card, .pub-item, .content h2, .content h3').forEach((el, i) => {
+        el.classList.add('reveal');
+        el.style.transitionDelay = (i % 5) * 90 + 'ms';
+        revealObserver.observe(el);
+    });
+
+    // Typewriter effect for hero title
+    const heroTitle = document.querySelector('.hero h2');
+    if (heroTitle) {
+        const text = heroTitle.textContent.trim();
+        heroTitle.textContent = '';
+        heroTitle.classList.add('typewriter-active');
+        let i = 0;
+        const type = () => {
+            if (i < text.length) {
+                heroTitle.textContent += text[i++];
+                setTimeout(type, 75);
+            } else {
+                heroTitle.classList.remove('typewriter-active');
+            }
+        };
+        setTimeout(type, 350);
+    }
+    </script>
 </body>
 </html>
