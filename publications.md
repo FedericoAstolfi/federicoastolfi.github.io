@@ -23,6 +23,26 @@ description: Publications, preprints, and conference talks by Federico Astolfi.
 
 ---
 
+# Thesis
+
+<ul class="pub-list">
+    <li class="pub-item">
+        <div class="pub-year">2024</div>
+        <div class="pub-details">
+            <strong>Minimal Lagrangian orbits of Hamiltonian actions over KE and KRS</strong><br>
+            <span class="pub-authors">Federico Astolfi · Supervisor: Prof.ssa Anna Gori</span><br>
+            <span class="pub-authors">MSc in Mathematics — Università degli Studi di Milano</span>
+            <p class="pub-abstract">Hamiltonian actions of a Lie group on a symplectic manifold admit a moment map from the manifold to the dual of the Lie algebra. We study its application to Lagrangian orbits, giving an explicit formula for the moment map on Kähler Ricci Soliton manifolds and studying minimality of Lagrangian orbits when the acting Lie group is semisimple.</p>
+            <button class="pub-toggle">▸ Show more</button>
+            <div class="pub-links">
+                <a href="/assets/MSc_Thesis_Astolfi.pdf" target="_blank" class="pub-link-btn">PDF</a>
+            </div>
+        </div>
+    </li>
+</ul>
+
+---
+
 # Talks & Posters
 
 <div class="talks-timeline">
