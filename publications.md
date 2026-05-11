@@ -39,10 +39,10 @@ description: Publications, preprints, and conference talks by Federico Astolfi.
     <div class="talk-item">
         <div class="talk-date">Mar 2026</div>
         <div class="talk-details">
-            <strong>Decoding the Surface Code with Graph Neural Networks</strong><br>
+            <strong>Pontryagin Maximum Principle for Rydberg-blockaded state-to-state transfers</strong><br>
             <span class="talk-conf">EuRyQa Conference: Neutral Atom Quantum Computing — Strasbourg, France</span><br>
             <span class="talk-meta">Poster · March 10–11, 2026</span><br>
-            <span class="talk-authors">Federico Astolfi, Hugo Perrin, Guido Pupillo</span>
+            <span class="talk-authors">Federico Alberto Astolfi, Sven Jandura, Guido Pupillo</span>
         </div>
     </div>
 </div>
