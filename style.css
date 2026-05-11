@@ -322,7 +322,7 @@ main {
 .edu-item::before {
     content: '';
     position: absolute;
-    left: calc(-1.5rem - 3.5px);
+    left: -1.82rem;
     top: 0.4rem;
     width: 10px;
     height: 10px;
@@ -543,7 +543,7 @@ footer p {
 .talk-item::before {
     content: '';
     position: absolute;
-    left: calc(-1.5rem - 3.5px);
+    left: -1.82rem;
     top: 0.4rem;
     width: 10px;
     height: 10px;
