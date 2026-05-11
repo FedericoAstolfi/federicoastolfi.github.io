@@ -8,7 +8,7 @@ layout: default
     <p>PhD student in Quantum Computing at <a href="https://www.cesq.eu/" target="_blank">CESQ</a>, University of Strasbourg. I work at the intersection of Quantum Optimal Control and Quantum Error Correction, with a background in pure Mathematics.</p>
     <div class="hero-links">
         <a href="/about" class="hero-btn">About me</a>
-
+        <a href="/publications" class="hero-btn hero-btn-outline">Publications</a>
         <a href="https://www.linkedin.com/in/federico-astolfi-450250216" target="_blank" class="hero-btn hero-btn-outline">LinkedIn</a>
     </div>
 </section>
@@ -20,8 +20,9 @@ layout: default
         <p>We study time-optimal state-to-state control for two- and multi-qubit operations motivated by neutral-atom quantum processors within the Rydberg blockade regime. Block-diagonalization of the Hamiltonian simplifies the dynamics and enables the application of a semi-analytic approach to the Pontryagin Maximum Principle to derive optimal laser controls. We provide a general formalism for $N$ qubits. For $N=2$ qubits, we classify normal and abnormal extremals, showcasing examples where abnormal solutions are either absent or suboptimal. For normal extremals, we establish a correspondence between the laser detuning from atomic transitions and the motion of a classical particle in a quartic potential, yielding a reduced, semi-analytic formulation of the control problem. Combining PMP-based insights with numerical optimization, our approach bridges analytic and computational methods for high-fidelity, time-optimal control.</p>
         <p><a href="https://arxiv.org/abs/2512.13549" target="_blank">→ View Paper on arXiv</a></p>
     </div>
-    <div class="card card-wip">
-        <h4>Work in progress</h4>
-        <p>New research directions in Quantum Error Correction and fault-tolerant quantum computing. More details coming soon.</p>
+    <div class="card">
+        <h4>Decoding the Surface Code with Graph Neural Networks</h4>
+        <p>A decoding strategy based on Graph Neural Networks that exploits the graph structure of the detector error model generated for the Surface Code to perform error correction, with a comparison to traditional decoders.</p>
+        <p><a href="/publications">→ Upcoming talk at APS DAMOP 2026</a></p>
     </div>
 </section>

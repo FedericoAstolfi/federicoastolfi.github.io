@@ -447,6 +447,13 @@ footer {
     text-decoration: none;
     font-size: 0.9rem;
     transition: color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.footer-social a svg {
+    flex-shrink: 0;
 }
 
 .footer-social a:hover {
@@ -492,6 +499,16 @@ footer p {
         gap: 0.3rem;
     }
 
+    .talk-item {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+
+    .talk-date {
+        width: auto;
+        min-width: auto;
+    }
+
     .social-links {
         flex-direction: column;
     }
@@ -507,4 +524,143 @@ footer p {
 .reveal.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Talks timeline */
+.talks-timeline {
+    margin: 1rem 0;
+    border-left: 3px solid #2a5cad;
+    padding-left: 1.5rem;
+}
+
+.talk-item {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.talk-item::before {
+    content: '';
+    position: absolute;
+    left: -1.95rem;
+    top: 0.4rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #2a5cad;
+}
+
+.talk-date {
+    font-weight: 700;
+    color: #1e3f70;
+    width: 150px;
+    min-width: 150px;
+    flex-shrink: 0;
+    font-size: 0.88rem;
+    padding-top: 2px;
+    line-height: 1.5;
+}
+
+.talk-details {
+    flex: 1;
+    line-height: 1.7;
+}
+
+.talk-conf {
+    color: #2a5cad;
+    font-size: 0.95rem;
+}
+
+.talk-meta {
+    color: #666;
+    font-size: 0.88rem;
+}
+
+.talk-authors {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.talk-abstract {
+    color: #555;
+    font-size: 0.93rem;
+    margin-top: 0.4rem;
+}
+
+/* Publication enhancements */
+.pub-abstract {
+    color: #555;
+    font-size: 0.93rem;
+    margin: 0.4rem 0 0.3rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.pub-abstract.expanded {
+    -webkit-line-clamp: unset;
+    overflow: visible;
+}
+
+.pub-toggle {
+    background: none;
+    border: none;
+    color: #2a5cad;
+    cursor: pointer;
+    font-size: 0.85rem;
+    padding: 0;
+    margin-bottom: 0.5rem;
+}
+
+.pub-toggle:hover {
+    text-decoration: underline;
+}
+
+.pub-links {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.3rem;
+}
+
+.pub-link-btn {
+    display: inline-block;
+    border: 1px solid #2a5cad;
+    color: #2a5cad;
+    padding: 0.25rem 0.7rem;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.pub-link-btn:hover {
+    background: #2a5cad;
+    color: white;
+    text-decoration: none;
+}
+
+/* CV download button */
+.cv-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #152d52 0%, #1e4585 100%);
+    color: white;
+    padding: 0.6rem 1.3rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin: 1rem 0;
+}
+
+.cv-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(21,45,82,0.3);
+    color: white;
+    text-decoration: none;
 }
