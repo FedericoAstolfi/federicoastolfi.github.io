@@ -14,6 +14,11 @@ layout: default
     I am a second-year PhD student in Quantum Computing at the University of Strasbourg. I was born in Milan and raised in Cinisello Balsamo. During highschool I attended classical studies and spent too many afternoons in the swimmingpool. Afterwards I was lured by curiosity into the realms of Mathematics, which I studied during by Bachelor's at University of Milano-Bicocca and through my Master's at University Statale of Milano. Manifolds and homology could summarize the study of those years, both as triggers for my interest and as protagonists of my books. After graduation I spent less than a year in consultancy, as test engineer, and then I resolved myself to start a PhD. Now I am mainly concerned with aspects of Quantum Optimal Control and Quantum Error Correction.
     </p>
 
+    <a href="/assets/Astolfi_CV.pdf" target="_blank" class="cv-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download CV
+    </a>
+
     <h3>Interests</h3>
     <p>Miscellanea</p>
   </div>
@@ -55,4 +60,25 @@ layout: default
     <div class="skill-tag">Python</div>
     <div class="skill-tag">Differential Geometry</div>
     <div class="skill-tag">Lie Groups</div>
+</div>
+
+## Academic Profiles
+
+<div class="social-links">
+    <a href="{{ site.scholar_url }}" target="_blank" class="social-card">
+        <strong>Google Scholar</strong>
+        <span>Publications & citations</span>
+    </a>
+    <a href="https://orcid.org/{{ site.orcid_id }}" target="_blank" class="social-card">
+        <strong>ORCID</strong>
+        <span>{{ site.orcid_id }}</span>
+    </a>
+    <a href="https://arxiv.org/search/?query=astolfi+federico&searchtype=author" target="_blank" class="social-card">
+        <strong>arXiv</strong>
+        <span>Preprints</span>
+    </a>
+    <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" target="_blank" class="social-card">
+        <strong>LinkedIn</strong>
+        <span>Professional profile</span>
+    </a>
 </div>
