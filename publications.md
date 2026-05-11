@@ -50,8 +50,8 @@ description: Publications, preprints, and conference talks by Federico Astolfi.
         <div class="talk-date">Jun 2026</div>
         <div class="talk-details">
             <strong>Decoding the Surface Code with Graph Neural Networks</strong><br>
-            <span class="talk-conf">57th Annual Meeting of APS DAMOP — Providence, Rhode Island</span><br>
-            <span class="talk-meta">Contributed Talk · Session P04: Quantum Error Correction · Thu June 4, 10:30 a.m.</span><br>
+            <span class="talk-conf"><a href="https://www.aps.org/meetings/meeting.cfm?name=DAMOP26" target="_blank">57th Annual Meeting of APS DAMOP</a> — Providence, Rhode Island</span><br>
+            <span class="talk-meta"><a href="https://meetings.aps.org/Meeting/DAMOP26/Session/P04" target="_blank">Contributed Talk · Session P04: Quantum Error Correction</a> · Thu June 4, 10:30 a.m.</span><br>
             <span class="talk-authors">Federico Astolfi, Hugo Perrin, Guido Pupillo</span>
             <p class="talk-abstract">Decoding plays a fundamental role in quantum error correction. In this talk, I present a decoding strategy based on Graph Neural Networks that exploits the graph structure of the detector error model generated for the Surface Code to perform error correction. I discuss its performance compared to traditional decoders and highlight current limitations and open challenges.</p>
         </div>
@@ -60,7 +60,7 @@ description: Publications, preprints, and conference talks by Federico Astolfi.
         <div class="talk-date">Mar 2026</div>
         <div class="talk-details">
             <strong>Pontryagin Maximum Principle for Rydberg-blockaded state-to-state transfers</strong><br>
-            <span class="talk-conf">EuRyQa Conference: Neutral Atom Quantum Computing — Strasbourg, France</span><br>
+            <span class="talk-conf"><a href="https://euryqa.eu/" target="_blank">EuRyQa Conference: Neutral Atom Quantum Computing</a> — Strasbourg, France</span><br>
             <span class="talk-meta">Poster · March 10–11, 2026</span><br>
             <span class="talk-authors">Federico Alberto Astolfi, Sven Jandura, Guido Pupillo</span>
         </div>

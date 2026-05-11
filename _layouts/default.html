@@ -111,8 +111,11 @@
     }
 
     document.querySelectorAll('.pub-toggle').forEach(btn => {
+        const abstract = btn.previousElementSibling;
+        if (abstract.scrollHeight <= abstract.clientHeight) {
+            btn.style.display = 'none';
+        }
         btn.addEventListener('click', () => {
-            const abstract = btn.previousElementSibling;
             abstract.classList.toggle('expanded');
             btn.textContent = abstract.classList.contains('expanded') ? '▾ Show less' : '▸ Show more';
         });
