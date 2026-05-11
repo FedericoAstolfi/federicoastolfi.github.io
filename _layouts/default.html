@@ -112,9 +112,12 @@
 
     document.querySelectorAll('.pub-toggle').forEach(btn => {
         const abstract = btn.previousElementSibling;
-        if (abstract.scrollHeight <= abstract.clientHeight) {
-            btn.style.display = 'none';
+        function updateToggle() {
+            if (abstract.classList.contains('expanded')) return;
+            btn.style.display = abstract.scrollHeight > abstract.clientHeight ? '' : 'none';
         }
+        updateToggle();
+        new ResizeObserver(updateToggle).observe(abstract);
         btn.addEventListener('click', () => {
             abstract.classList.toggle('expanded');
             btn.textContent = abstract.classList.contains('expanded') ? '▾ Show less' : '▸ Show more';
