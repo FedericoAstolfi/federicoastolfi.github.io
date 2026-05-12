@@ -16,6 +16,6 @@ I intend to write posts about:
 - **Math I like** — topics in differential geometry, Lie groups, and wherever curiosity takes me
 - **PhD life** — honest reflections on the process of doing research
 
-Posts will be irregular by nature.Peace.
+Posts will be irregular by nature. Peace.
 
 Stay tuned.
