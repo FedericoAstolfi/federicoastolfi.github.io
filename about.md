@@ -51,34 +51,3 @@ layout: default
         </div>
     </div>
 </div>
-
-## Skills
-
-<div class="skills-grid">
-    <div class="skill-tag">Quantum Optimal Control</div>
-    <div class="skill-tag">Quantum Error Correction</div>
-    <div class="skill-tag">Python</div>
-    <div class="skill-tag">Differential Geometry</div>
-    <div class="skill-tag">Lie Groups</div>
-</div>
-
-## Academic Profiles
-
-<div class="social-links">
-    <a href="{{ site.scholar_url }}" target="_blank" class="social-card">
-        <strong>Google Scholar</strong>
-        <span>Publications & citations</span>
-    </a>
-    <a href="https://orcid.org/{{ site.orcid_id }}" target="_blank" class="social-card">
-        <strong>ORCID</strong>
-        <span>{{ site.orcid_id }}</span>
-    </a>
-    <a href="https://arxiv.org/search/?query=astolfi+federico&searchtype=author" target="_blank" class="social-card">
-        <strong>arXiv</strong>
-        <span>Preprints</span>
-    </a>
-    <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" target="_blank" class="social-card">
-        <strong>LinkedIn</strong>
-        <span>Professional profile</span>
-    </a>
-</div>
