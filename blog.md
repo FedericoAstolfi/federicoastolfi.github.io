@@ -36,7 +36,7 @@ title: Blog
 }
 
 .post-list h3 a {
-    color: #667eea;
+    color: #2a5cad;
     text-decoration: none;
 }
 
