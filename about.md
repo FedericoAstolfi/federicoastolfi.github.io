@@ -20,9 +20,11 @@ layout: default
     </a>
 
     <h3>Interests</h3>
-    <p> Picks of enthusiasm make the variance of my interests sort of broad and heavily time-dependent, but the long-standing ones can be summarized by
-- reading
-- sports: I have swum for the best part of my life as agonistic athlete, while now I am engaged with (beach) volleyball </p>
+    <p>Bursts of enthusiasm make the variance of my interests sort of broad and heavily time-dependent, but the long-standing ones can be summarized as:</p>
+    <ul>
+        <li>Reading</li>
+        <li>Sports: I swam competitively for the best part of my life, while now I am into (beach) volleyball</li>
+    </ul>
   </div>
 </div>
 
