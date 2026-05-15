@@ -8,13 +8,15 @@ description: Publications, preprints, and conference talks by Federico Astolfi.
 
 <ul class="pub-list">
     <li class="pub-item">
-        <div class="pub-year">2025</div>
+        <div class="pub-year">2026</div>
         <div class="pub-details">
             <strong>Pontryagin Maximum Principle for Rydberg-blockaded state-to-state transfers: A semi-analytic approach</strong><br>
-            <span class="pub-authors">Federico Alberto Astolfi, Sven Jandura, Guido Pupillo</span>
+            <span class="pub-authors">Federico Alberto Astolfi, Sven Jandura, Guido Pupillo</span><br>
+            <span class="pub-authors">Phys. Rev. Research 8, 023162 (2026)</span>
             <p class="pub-abstract">We study time-optimal state-to-state control for two- and multi-qubit operations motivated by neutral-atom quantum processors within the Rydberg blockade regime. Block-diagonalization of the Hamiltonian simplifies the dynamics and enables the application of a semi-analytic approach to the Pontryagin Maximum Principle to derive optimal laser controls.</p>
             <button class="pub-toggle">▸ Show more</button>
             <div class="pub-links">
+                <a href="https://doi.org/10.1103/2w2v-hpst" target="_blank" class="pub-link-btn">Phys. Rev. Research</a>
                 <a href="https://arxiv.org/abs/2512.13549" target="_blank" class="pub-link-btn">arXiv:2512.13549</a>
             </div>
         </div>
