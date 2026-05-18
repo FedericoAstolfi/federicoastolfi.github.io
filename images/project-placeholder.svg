@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e4585"/>
+      <stop offset="100%" stop-color="#1a3a6a"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="350" fill="url(#bg3)"/>
+  <!-- Abstract geometric pattern -->
+  <circle cx="400" cy="155" r="80" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <circle cx="400" cy="155" r="55" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+  <circle cx="400" cy="155" r="30" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+  <circle cx="400" cy="155" r="8" fill="rgba(255,255,255,0.15)"/>
+  <!-- Radial lines -->
+  <line x1="400" y1="75" x2="400" y2="235" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <line x1="320" y1="155" x2="480" y2="155" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <line x1="343" y1="98" x2="457" y2="212" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <line x1="457" y1="98" x2="343" y2="212" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <!-- Label -->
+  <text x="400" y="320" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="rgba(255,255,255,0.35)" letter-spacing="3">COMING SOON</text>
+</svg>

@@ -28,6 +28,13 @@ layout: default
                     <a href="/publications">→ Upcoming talk at APS DAMOP 2026</a>
                 </div>
             </div>
+            <div class="carousel-slide">
+                <img src="/images/project-placeholder.svg" alt="Coming soon" class="carousel-img">
+                <div class="carousel-body">
+                    <h4>New project coming soon</h4>
+                    <p>Stay tuned for updates on upcoming research.</p>
+                </div>
+            </div>
         </div>
         <div class="carousel-nav">
             <button class="carousel-btn carousel-prev">&#8249;</button>
@@ -36,6 +43,7 @@ layout: default
         <div class="carousel-dots">
             <button class="carousel-dot active" data-index="0"></button>
             <button class="carousel-dot" data-index="1"></button>
+            <button class="carousel-dot" data-index="2"></button>
         </div>
     </div>
 </section>
