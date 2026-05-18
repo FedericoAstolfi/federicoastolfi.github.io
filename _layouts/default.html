@@ -133,6 +133,17 @@
         const slides = carousel.querySelectorAll('.carousel-slide');
         let current = 0;
 
+        // Equalize slide body heights
+        function equalizeHeights() {
+            const bodies = carousel.querySelectorAll('.carousel-body');
+            bodies.forEach(b => b.style.minHeight = '');
+            let maxH = 0;
+            bodies.forEach(b => { if (b.scrollHeight > maxH) maxH = b.scrollHeight; });
+            bodies.forEach(b => b.style.minHeight = maxH + 'px');
+        }
+        equalizeHeights();
+        window.addEventListener('resize', equalizeHeights);
+
         function goTo(i) {
             current = (i + slides.length) % slides.length;
             track.style.transform = 'translateX(-' + (current * 100) + '%)';
