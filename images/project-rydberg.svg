@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#152d52"/>
+      <stop offset="100%" stop-color="#1e4585"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="350" fill="url(#bg1)"/>
+  <!-- Atom orbits -->
+  <ellipse cx="400" cy="175" rx="160" ry="60" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+  <ellipse cx="400" cy="175" rx="160" ry="60" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" transform="rotate(60 400 175)"/>
+  <ellipse cx="400" cy="175" rx="160" ry="60" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" transform="rotate(-60 400 175)"/>
+  <!-- Nucleus -->
+  <circle cx="400" cy="175" r="18" fill="rgba(255,255,255,0.15)"/>
+  <!-- Electrons -->
+  <circle cx="560" cy="175" r="6" fill="rgba(255,255,255,0.3)"/>
+  <circle cx="320" cy="106" r="6" fill="rgba(255,255,255,0.3)"/>
+  <circle cx="320" cy="244" r="6" fill="rgba(255,255,255,0.3)"/>
+  <!-- Blockade radius -->
+  <circle cx="400" cy="175" r="100" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="40" stroke-dasharray="8 6"/>
+  <!-- Label -->
+  <text x="400" y="320" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="rgba(255,255,255,0.35)" letter-spacing="3">QUANTUM OPTIMAL CONTROL</text>
+</svg>

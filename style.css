@@ -260,6 +260,136 @@ main {
     color: #888;
 }
 
+/* Project Carousel */
+.carousel {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    margin: 1.5rem 0;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-slide {
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.carousel-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+.carousel-body {
+    padding: 1.5rem 1.8rem;
+    background: #f8f9fa;
+}
+
+.carousel-body h4 {
+    color: #1e3f70;
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Playfair Display', Georgia, serif;
+}
+
+.carousel-body p {
+    color: #555;
+    font-size: 0.93rem;
+    line-height: 1.7;
+    margin-bottom: 0.6rem;
+}
+
+.carousel-body a {
+    color: #2a5cad;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.carousel-body a:hover {
+    text-decoration: underline;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 220px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none;
+    padding: 0 0.6rem;
+}
+
+.carousel-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.85);
+    color: #1e3f70;
+    font-size: 1.1rem;
+    cursor: pointer;
+    pointer-events: all;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.carousel-btn:hover {
+    background: white;
+    transform: scale(1.1);
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 0;
+    background: #f8f9fa;
+}
+
+.carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background: #ccc;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-dot.active {
+    background: #2a5cad;
+    transform: scale(1.25);
+}
+
+@media (max-width: 768px) {
+    .carousel-img {
+        height: 160px;
+    }
+
+    .carousel-body {
+        padding: 1.2rem 1rem;
+    }
+
+    .carousel-body h4 {
+        font-size: 1.05rem;
+    }
+}
+
 /* Publications list */
 .pub-list {
     list-style: none;
