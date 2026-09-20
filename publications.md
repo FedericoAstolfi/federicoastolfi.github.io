@@ -7,20 +7,21 @@ description: Publications, preprints, and conference talks by Federico Astolfi.
 # Publications
 
 <ul class="pub-list">
+{% for p in site.data.publications.papers %}
     <li class="pub-item">
-        <div class="pub-year">2026</div>
+        <div class="pub-year">{{ p.year }}</div>
         <div class="pub-details">
-            <strong>Pontryagin Maximum Principle for Rydberg-blockaded state-to-state transfers: A semi-analytic approach</strong><br>
-            <span class="pub-authors">Federico Alberto Astolfi, Sven Jandura, Guido Pupillo</span><br>
-            <span class="pub-authors">Phys. Rev. Research 8, 023162 (2026)</span>
-            <p class="pub-abstract">We study time-optimal state-to-state control for two- and multi-qubit operations motivated by neutral-atom quantum processors within the Rydberg blockade regime. Block-diagonalization of the Hamiltonian simplifies the dynamics and enables the application of a semi-analytic approach to the Pontryagin Maximum Principle to derive optimal laser controls.</p>
-            <button class="pub-toggle">▸ Show more</button>
-            <div class="pub-links">
-                <a href="https://doi.org/10.1103/2w2v-hpst" target="_blank" class="pub-link-btn">Phys. Rev. Research</a>
-                <a href="https://arxiv.org/abs/2512.13549" target="_blank" class="pub-link-btn">arXiv:2512.13549</a>
-            </div>
+            <strong>{{ p.title }}</strong><br>
+            <span class="pub-authors">{{ p.authors }}</span><br>
+            <span class="pub-authors">{{ p.venue }}</span>
+            {% if p.abstract %}<p class="pub-abstract">{{ p.abstract }}</p>
+            <button class="pub-toggle">▸ Show more</button>{% endif %}
+            {% if p.links %}<div class="pub-links">
+                {% for l in p.links %}<a href="{{ l.url }}" target="_blank" class="pub-link-btn">{{ l.label }}</a>{% endfor %}
+            </div>{% endif %}
         </div>
     </li>
+{% endfor %}
 </ul>
 
 ---
@@ -28,43 +29,38 @@ description: Publications, preprints, and conference talks by Federico Astolfi.
 # Thesis
 
 <ul class="pub-list">
+{% for p in site.data.publications.thesis %}
     <li class="pub-item">
-        <div class="pub-year">2024</div>
+        <div class="pub-year">{{ p.year }}</div>
         <div class="pub-details">
-            <strong>Minimal Lagrangian orbits of Hamiltonian actions over KE and KRS</strong><br>
-            <span class="pub-authors">Federico Astolfi · Supervisor: Prof.ssa Anna Gori</span><br>
-            <span class="pub-authors">MSc in Mathematics — Università degli Studi di Milano</span>
-            <p class="pub-abstract">Hamiltonian actions of a Lie group on a symplectic manifold admit a moment map from the manifold to the dual of the Lie algebra. We study its application to Lagrangian orbits, giving an explicit formula for the moment map on Kähler Ricci Soliton manifolds and studying minimality of Lagrangian orbits when the acting Lie group is semisimple.</p>
-            <button class="pub-toggle">▸ Show more</button>
-            <div class="pub-links">
-                <a href="/assets/MSc_Thesis_Astolfi.pdf" target="_blank" class="pub-link-btn">PDF</a>
-            </div>
+            <strong>{{ p.title }}</strong><br>
+            <span class="pub-authors">{{ p.authors }}</span><br>
+            <span class="pub-authors">{{ p.venue }}</span>
+            {% if p.abstract %}<p class="pub-abstract">{{ p.abstract }}</p>
+            <button class="pub-toggle">▸ Show more</button>{% endif %}
+            {% if p.links %}<div class="pub-links">
+                {% for l in p.links %}<a href="{{ l.url }}" target="_blank" class="pub-link-btn">{{ l.label }}</a>{% endfor %}
+            </div>{% endif %}
         </div>
     </li>
+{% endfor %}
 </ul>
 
 ---
 
-# Talks & Posters
+# Talks &amp; Posters
 
 <div class="talks-timeline">
+{% for t in site.data.publications.talks %}
     <div class="talk-item">
-        <div class="talk-date">Jun 2026</div>
+        <div class="talk-date">{{ t.date }}</div>
         <div class="talk-details">
-            <strong>Decoding the Surface Code with Graph Neural Networks</strong><br>
-            <span class="talk-conf">57th Annual Meeting of APS DAMOP — Providence, Rhode Island</span><br>
-            <span class="talk-meta">Contributed Talk · Session P04: Quantum Error Correction · Thu June 4, 10:30 a.m.</span><br>
-            <span class="talk-authors">Federico Astolfi, Hugo Perrin, Guido Pupillo</span>
-            <p class="talk-abstract">Decoding plays a fundamental role in quantum error correction. In this talk, I present a decoding strategy based on Graph Neural Networks that exploits the graph structure of the detector error model generated for the Surface Code to perform error correction. I discuss its performance compared to traditional decoders and highlight current limitations and open challenges.</p>
+            <strong>{{ t.title }}</strong><br>
+            <span class="talk-conf">{{ t.conf }}</span><br>
+            {% if t.meta %}<span class="talk-meta">{{ t.meta }}</span><br>{% endif %}
+            <span class="talk-authors">{{ t.authors }}</span>
+            {% if t.abstract %}<p class="talk-abstract">{{ t.abstract }}</p>{% endif %}
         </div>
     </div>
-    <div class="talk-item">
-        <div class="talk-date">Mar 2026</div>
-        <div class="talk-details">
-            <strong>Pontryagin Maximum Principle for Rydberg-blockaded state-to-state transfers</strong><br>
-            <span class="talk-conf">EuRyQa Conference: Neutral Atom Quantum Computing — Strasbourg, France</span><br>
-            <span class="talk-meta">Poster · March 10–11, 2026</span><br>
-            <span class="talk-authors">Federico Alberto Astolfi, Sven Jandura, Guido Pupillo</span>
-        </div>
-    </div>
+{% endfor %}
 </div>

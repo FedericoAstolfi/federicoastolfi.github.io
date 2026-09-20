@@ -20,33 +20,3 @@ title: Blog
 {% else %}
   <p>No posts yet. Check back soon!</p>
 {% endif %}
-
-<style>
-.post-list {
-    list-style: none;
-    padding: 0;
-}
-
-.post-list li {
-    margin-bottom: 2rem;
-}
-
-.post-list h3 {
-    margin-bottom: 0.5rem;
-}
-
-.post-list h3 a {
-    color: #2a5cad;
-    text-decoration: none;
-}
-
-.post-list h3 a:hover {
-    text-decoration: underline;
-}
-
-.post-meta {
-    color: #666;
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-}
-</style>

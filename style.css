@@ -935,6 +935,370 @@ footer p {
 }
 
 /* ============================================================
+   About header — compact, well-integrated portrait
+   ============================================================ */
+.about-header {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 1.8rem;
+}
+
+.about-photo {
+    width: 200px;
+    height: auto;
+    border-radius: 12px;
+    flex-shrink: 0;
+    box-shadow: 0 6px 20px var(--shadow-sm);
+}
+
+.about-bio {
+    flex: 1;
+    min-width: 280px;
+}
+
+@media (max-width: 768px) {
+    .about-header {
+        gap: 1.2rem;
+        justify-content: center;
+    }
+    .about-photo {
+        width: 150px;
+    }
+    .about-bio {
+        min-width: 100%;
+    }
+}
+
+/* ============================================================
+   Research section (landing + project pages)
+   ============================================================ */
+.eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.research-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: var(--accent-strong);
+    font-size: 2rem;
+    letter-spacing: -0.3px;
+    margin-bottom: 0.8rem;
+    text-wrap: balance;
+}
+
+.research-intro {
+    color: var(--text-soft);
+    max-width: 62ch;
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Landing cards */
+.research-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .research-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+.research-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1.4rem 1.4rem 1.2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.research-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 22px var(--shadow-md);
+    border-color: var(--accent);
+}
+
+.research-card h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: var(--accent-strong);
+    font-size: 1.25rem;
+    margin: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.research-card-tagline {
+    color: var(--text-soft);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.research-card-papers {
+    margin: 0.3rem 0;
+}
+
+.paperrow {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 0;
+    border-top: 1px dashed var(--border);
+}
+
+.paperrow-title {
+    flex: 1;
+    font-size: 0.88rem;
+    color: var(--text);
+}
+
+.research-more {
+    margin-top: auto;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.92rem;
+}
+
+/* Project page — threaded developments */
+.research-page {
+    max-width: 760px;
+}
+
+.research-thread {
+    margin: 1.8rem 0 1.5rem;
+    position: relative;
+    padding-left: 1.6rem;
+}
+
+.research-thread::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: var(--border);
+}
+
+.thread-node {
+    position: relative;
+    margin-bottom: 1.8rem;
+}
+
+.thread-node::before {
+    content: '';
+    position: absolute;
+    left: -1.6rem;
+    top: 6px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 3px solid var(--accent);
+}
+
+.thread-note::before {
+    border-color: var(--text-muted);
+}
+
+.thread-head {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+}
+
+.thread-head h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: var(--accent-strong);
+    font-size: 1.15rem;
+    margin: 0;
+    border-bottom: none;
+    padding: 0;
+}
+
+.thread-node p {
+    color: var(--text-soft);
+    font-size: 0.96rem;
+    margin: 0.5rem 0 0;
+    max-width: 60ch;
+}
+
+.thread-links {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.7rem;
+}
+
+.research-related {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    padding: 1rem 1.2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.research-related a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.92rem;
+}
+
+.research-related a:hover {
+    text-decoration: underline;
+}
+
+/* Status badges */
+.badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    padding: 3px 9px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+.b-pub  { color: #1a7f4b; background: rgba(26,127,75,0.14); }
+.b-pre  { color: #2a5cad; background: rgba(42,92,173,0.16); }
+.b-prep { color: #9a6a0a; background: rgba(176,120,20,0.18); }
+.b-plan { color: #5a6472; background: rgba(120,132,148,0.18); }
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .b-pub  { color: #63d29a; background: rgba(99,210,154,0.15); }
+    :root:not([data-theme="light"]) .b-pre  { color: #7aa9ec; background: rgba(122,169,236,0.18); }
+    :root:not([data-theme="light"]) .b-prep { color: #d9a441; background: rgba(217,164,65,0.18); }
+    :root:not([data-theme="light"]) .b-plan { color: #9aa6b6; background: rgba(154,166,182,0.18); }
+}
+:root[data-theme="dark"] .b-pub  { color: #63d29a; background: rgba(99,210,154,0.15); }
+:root[data-theme="dark"] .b-pre  { color: #7aa9ec; background: rgba(122,169,236,0.18); }
+:root[data-theme="dark"] .b-prep { color: #d9a441; background: rgba(217,164,65,0.18); }
+:root[data-theme="dark"] .b-plan { color: #9aa6b6; background: rgba(154,166,182,0.18); }
+
+/* ============================================================
+   Blog list + single post
+   ============================================================ */
+.post-list {
+    list-style: none;
+    padding: 0;
+}
+
+.post-list li {
+    margin-bottom: 1.5rem;
+}
+
+.post-list h3 {
+    margin-bottom: 0.4rem;
+}
+
+.post-list h3 a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.post-list h3 a:hover {
+    text-decoration: underline;
+}
+
+.post-meta {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.post {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.post-header {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.post-header h1 {
+    color: var(--accent-strong);
+    margin-bottom: 0.5rem;
+    font-family: 'Playfair Display', Georgia, serif;
+}
+
+.post-content {
+    line-height: 1.8;
+}
+
+.post-content h2 {
+    color: var(--accent-strong);
+    margin-top: 2rem;
+}
+
+.post-content h3 {
+    color: var(--accent);
+    margin-top: 1.5rem;
+}
+
+.post-content p {
+    margin-bottom: 1rem;
+}
+
+.post-content a {
+    color: var(--accent);
+}
+
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.post-content ul,
+.post-content ol {
+    margin: 0 0 1rem 1.4rem;
+}
+
+.post-content code {
+    background: var(--surface);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.post-content pre {
+    background: var(--surface);
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+.post-content pre code {
+    background: none;
+    padding: 0;
+}
+
+.post-content blockquote {
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+    color: var(--text-soft);
+    margin: 1rem 0;
+}
+
+/* ============================================================
    Reduced motion: respect the user's OS setting
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {

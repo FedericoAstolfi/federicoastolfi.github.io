@@ -40,3 +40,56 @@ collections:
         fields:
           - { label: "Title", name: "title", widget: "hidden", default: "Home" }
           - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "data"
+    label: "Publications (data)"
+    files:
+      - name: "publications"
+        label: "Publications, thesis & talks"
+        file: "_data/publications.yml"
+        fields:
+          - label: "Papers"
+            name: "papers"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Year", name: "year", widget: "number", value_type: "int" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Authors", name: "authors", widget: "string" }
+              - { label: "Venue", name: "venue", widget: "string" }
+              - { label: "Abstract", name: "abstract", widget: "text", required: false }
+              - label: "Links"
+                name: "links"
+                widget: "list"
+                required: false
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }
+          - label: "Thesis"
+            name: "thesis"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Year", name: "year", widget: "number", value_type: "int" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Authors", name: "authors", widget: "string" }
+              - { label: "Venue", name: "venue", widget: "string" }
+              - { label: "Abstract", name: "abstract", widget: "text", required: false }
+              - label: "Links"
+                name: "links"
+                widget: "list"
+                required: false
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }
+          - label: "Talks"
+            name: "talks"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Date", name: "date", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Conference", name: "conf", widget: "string" }
+              - { label: "Meta", name: "meta", widget: "string", required: false }
+              - { label: "Authors", name: "authors", widget: "string" }
+              - { label: "Abstract", name: "abstract", widget: "text", required: false }

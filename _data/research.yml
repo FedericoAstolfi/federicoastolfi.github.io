@@ -1,0 +1,41 @@
+# Research lines — the narrative behind the papers.
+# Each line becomes a project page; add a paper by adding an item with a status.
+# status: published | preprint | in-preparation | planned
+# type: note  -> a macro/thinking-out-loud block with no badge and no links
+
+lines:
+  - id: optimal-control
+    title: "Quantum Optimal Control"
+    tagline: "Time-optimal control of neutral-atom qubits in the Rydberg-blockade regime — and where the method goes next."
+    intro: "How fast — and how cleanly — can you drive a pair of neutral atoms through a gate? In the Rydberg-blockade regime the answer has real structure, and the Pontryagin Maximum Principle turns that structure into laser pulses you can actually write down. This is the thread I keep pulling."
+    papers:
+      - title: "Pontryagin Maximum Principle for Rydberg-blockaded transfers"
+        status: published
+        blurb: "The first result: block-diagonalizing the Hamiltonian collapses the dynamics enough that a semi-analytic PMP gives time-optimal state-to-state transfers for two- and multi-qubit operations. The point of \"semi-analytic\" is that you keep your hands on the physics instead of handing everything to a black-box optimizer."
+        links:
+          - { label: "Phys. Rev. Research 8, 023162", url: "https://doi.org/10.1103/2w2v-hpst" }
+          - { label: "arXiv:2512.13549", url: "https://arxiv.org/abs/2512.13549" }
+      - type: note
+        title: "Where it's going — ongoing developments"
+        blurb: "The macro view: what the semi-analytic picture buys us beyond the first gate, the links to energy-optimal control and to leakage out of the computational subspace, and the open questions I find most interesting right now. No paper attached yet — this is the thinking-out-loud part."
+      - title: "Third paper — working title"
+        status: in-preparation
+        blurb: "A teaser of the next result in this line. When the preprint is ready this badge flips to Preprint and the arXiv link lands here — nothing else on the page has to change."
+    related:
+      publications: "/publications"
+      blog_tag: "optimal-control"
+
+  - id: gnn
+    title: "QEC · GNN Decoding"
+    tagline: "Decoding the surface code with graph neural networks that exploit the detector-error-model graph."
+    intro: "Decoding is the quiet bottleneck of quantum error correction: the code can protect information only as well as the classical decoder can interpret the syndrome. The detector error model is naturally a graph — so why not decode it with a graph neural network that learns on that structure directly?"
+    papers:
+      - title: "Decoding the Surface Code with Graph Neural Networks"
+        status: in-preparation
+        blurb: "A decoder that reads the detector-error-model graph of the surface code and learns to correct on it. I compare it against traditional decoders and lay out where it wins, where it doesn't yet, and what the open challenges are. Presented as a contributed talk at APS DAMOP 2026."
+      - type: note
+        title: "Limits and open challenges"
+        blurb: "The honest part: scaling behaviour, how it copes with circuit-level noise, and the gap between a promising benchmark and a decoder you'd actually deploy."
+    related:
+      publications: "/publications"
+      blog_tag: "gnn"

@@ -1,0 +1,32 @@
+{% assign line = nil %}
+{% for l in site.data.research.lines %}{% if l.id == include.id %}{% assign line = l %}{% endif %}{% endfor %}
+<section class="content research-page">
+    <p class="eyebrow">Research line</p>
+    <h1 class="research-title">{{ line.title }}</h1>
+    <p class="research-intro">{{ line.intro }}</p>
+
+    <div class="research-thread">
+    {% for item in line.papers %}
+        <div class="thread-node{% if item.type == 'note' %} thread-note{% endif %}">
+            <div class="thread-head">
+                <h3>{{ item.title }}</h3>
+                {% case item.status %}
+                    {% when 'published' %}<span class="badge b-pub">Published</span>
+                    {% when 'preprint' %}<span class="badge b-pre">Preprint</span>
+                    {% when 'in-preparation' %}<span class="badge b-prep">In preparation</span>
+                    {% when 'planned' %}<span class="badge b-plan">Planned</span>
+                {% endcase %}
+            </div>
+            {% if item.blurb %}<p>{{ item.blurb }}</p>{% endif %}
+            {% if item.links %}<div class="thread-links">
+                {% for l in item.links %}<a href="{{ l.url }}" target="_blank" class="pub-link-btn">{{ l.label }}</a>{% endfor %}
+            </div>{% endif %}
+        </div>
+    {% endfor %}
+    </div>
+
+    <div class="research-related">
+        {% if line.related.publications %}<a href="{{ line.related.publications | relative_url }}">See in Publications →</a>{% endif %}
+        {% if line.related.blog_tag %}<a href="{{ '/blog' | relative_url }}">Blog · #{{ line.related.blog_tag }} →</a>{% endif %}
+    </div>
+</section>

@@ -1,0 +1,34 @@
+# Publications data — edit here to add/update papers, thesis entries and talks.
+# The Publications page renders automatically from this file.
+
+papers:
+  - year: 2026
+    title: "Pontryagin Maximum Principle for Rydberg-blockaded state-to-state transfers: A semi-analytic approach"
+    authors: "Federico Alberto Astolfi, Sven Jandura, Guido Pupillo"
+    venue: "Phys. Rev. Research 8, 023162 (2026)"
+    abstract: "We study time-optimal state-to-state control for two- and multi-qubit operations motivated by neutral-atom quantum processors within the Rydberg blockade regime. Block-diagonalization of the Hamiltonian simplifies the dynamics and enables the application of a semi-analytic approach to the Pontryagin Maximum Principle to derive optimal laser controls."
+    links:
+      - { label: "Phys. Rev. Research", url: "https://doi.org/10.1103/2w2v-hpst" }
+      - { label: "arXiv:2512.13549", url: "https://arxiv.org/abs/2512.13549" }
+
+thesis:
+  - year: 2024
+    title: "Minimal Lagrangian orbits of Hamiltonian actions over KE and KRS"
+    authors: "Federico Astolfi · Supervisor: Prof.ssa Anna Gori"
+    venue: "MSc in Mathematics — Università degli Studi di Milano"
+    abstract: "Hamiltonian actions of a Lie group on a symplectic manifold admit a moment map from the manifold to the dual of the Lie algebra. We study its application to Lagrangian orbits, giving an explicit formula for the moment map on Kähler Ricci Soliton manifolds and studying minimality of Lagrangian orbits when the acting Lie group is semisimple."
+    links:
+      - { label: "PDF", url: "/assets/MSc_Thesis_Astolfi.pdf" }
+
+talks:
+  - date: "Jun 2026"
+    title: "Decoding the Surface Code with Graph Neural Networks"
+    conf: "57th Annual Meeting of APS DAMOP — Providence, Rhode Island"
+    meta: "Contributed Talk · Session P04: Quantum Error Correction · Thu June 4, 10:30 a.m."
+    authors: "Federico Astolfi, Hugo Perrin, Guido Pupillo"
+    abstract: "Decoding plays a fundamental role in quantum error correction. In this talk, I present a decoding strategy based on Graph Neural Networks that exploits the graph structure of the detector error model generated for the Surface Code to perform error correction. I discuss its performance compared to traditional decoders and highlight current limitations and open challenges."
+  - date: "Mar 2026"
+    title: "Pontryagin Maximum Principle for Rydberg-blockaded state-to-state transfers"
+    conf: "EuRyQa Conference: Neutral Atom Quantum Computing — Strasbourg, France"
+    meta: "Poster · March 10–11, 2026"
+    authors: "Federico Alberto Astolfi, Sven Jandura, Guido Pupillo"
