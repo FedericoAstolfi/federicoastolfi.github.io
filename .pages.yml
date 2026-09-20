@@ -33,15 +33,6 @@ content:
         label: Contenuto
         type: rich-text
 
-  - name: contact
-    label: Contact
-    type: file
-    path: contact.md
-    fields:
-      - name: body
-        label: Contenuto
-        type: rich-text
-
   - name: home
     label: Home
     type: file

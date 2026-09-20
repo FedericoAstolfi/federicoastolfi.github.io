@@ -28,12 +28,6 @@ collections:
         fields:
           - { label: "Title", name: "title", widget: "hidden", default: "About" }
           - { label: "Body", name: "body", widget: "markdown" }
-      - name: "contact"
-        label: "Contact"
-        file: "contact.md"
-        fields:
-          - { label: "Title", name: "title", widget: "hidden", default: "Contact" }
-          - { label: "Body", name: "body", widget: "markdown" }
       - name: "home"
         label: "Home"
         file: "index.md"

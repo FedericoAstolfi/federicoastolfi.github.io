@@ -13,7 +13,7 @@ layout: default
     <div class="carousel">
         <div class="carousel-track">
             <div class="carousel-slide">
-                <img src="/images/project-rydberg.svg" alt="Quantum Optimal Control" class="carousel-img">
+                <img src="/images/project-rydberg.svg" alt="Quantum Optimal Control" class="carousel-img" loading="lazy" decoding="async">
                 <div class="carousel-body">
                     <h4>Pontryagin Maximum Principle for Rydberg-blockaded state-to-state transfers</h4>
                     <p>We study time-optimal state-to-state control for two- and multi-qubit operations motivated by neutral-atom quantum processors within the Rydberg blockade regime.</p>
@@ -21,7 +21,7 @@ layout: default
                 </div>
             </div>
             <div class="carousel-slide">
-                <img src="/images/project-gnn.svg" alt="Quantum Error Correction" class="carousel-img">
+                <img src="/images/project-gnn.svg" alt="Quantum Error Correction" class="carousel-img" loading="lazy" decoding="async">
                 <div class="carousel-body">
                     <h4>Decoding the Surface Code with Graph Neural Networks</h4>
                     <p>A decoding strategy based on Graph Neural Networks that exploits the graph structure of the detector error model for the Surface Code to perform error correction.</p>
@@ -29,7 +29,7 @@ layout: default
                 </div>
             </div>
             <div class="carousel-slide">
-                <img src="/images/project-placeholder.svg" alt="Coming soon" class="carousel-img">
+                <img src="/images/project-placeholder.svg" alt="Coming soon" class="carousel-img" loading="lazy" decoding="async">
                 <div class="carousel-body">
                     <h4>New project coming soon</h4>
                     <p>Stay tuned for updates on upcoming research.</p>
