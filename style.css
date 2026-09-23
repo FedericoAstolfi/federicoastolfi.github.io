@@ -183,7 +183,7 @@ main {
 .hero {
     text-align: center;
     padding: 3.5rem 3rem 3rem;
-    margin: 0 -2rem 3rem;
+    margin: -2rem -2rem 3rem;
     background: linear-gradient(-45deg, var(--navy-1), var(--navy-mid), var(--navy-2), var(--navy-1));
     background-size: 300% 300%;
     animation: gradientShift 18s ease infinite;
@@ -755,7 +755,7 @@ footer p {
 
     .hero {
         padding: 2.8rem 1.5rem 2.5rem;
-        margin: 0 -1rem 2.5rem;
+        margin: -2rem -1rem 2.5rem;
     }
 
     .pub-item {
