@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin dashboard — Federico Astolfi</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="theme-color" content="#152d52">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/images/icon-192.png">
   <style>
     :root {
       --bg:#f2f4f7; --panel:#ffffff; --ink:#2f3542; --muted:#6b7280;
@@ -26,7 +29,13 @@
       align-items:baseline; gap:0.8rem; flex-wrap:wrap; }
     header.top h1 { font-family:Georgia,serif; font-size:1.4rem; margin:0; }
     header.top .sub { color:rgba(255,255,255,0.8); font-size:0.85rem; }
-    header.top a.site { color:#cfe0f7; font-size:0.85rem; margin-left:auto; text-decoration:none; }
+    header.top a.site { color:#cfe0f7; font-size:0.85rem; margin-left:0.9rem; text-decoration:none; }
+    header.top .install {
+      margin-left:auto; font:inherit; font-size:0.82rem; cursor:pointer;
+      background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.3);
+      color:#fff; border-radius:8px; padding:0.35rem 0.8rem;
+    }
+    header.top .install:hover { background:rgba(255,255,255,0.24); }
     main { max-width:960px; margin:0 auto; padding:1.4rem 1.2rem 3rem; }
     h2.section { font-size:0.75rem; letter-spacing:0.12em; text-transform:uppercase;
       color:var(--muted); margin:1.8rem 0 0.8rem; font-weight:700; }
@@ -68,6 +77,28 @@
     table.cheat td { padding:0.35rem 0.6rem; border-bottom:1px solid var(--border); vertical-align:top; }
     table.cheat code { background:var(--bg); padding:0.1em 0.4em; border-radius:4px;
       font-family:ui-monospace,Menlo,Consolas,monospace; font-size:0.88em; }
+
+    .postrow { display:flex; align-items:center; gap:0.7rem; padding:0.55rem 0;
+      border-top:1px solid var(--border); font-size:0.9rem; }
+    .postrow:first-child { border-top:none; }
+    .postrow .pt { flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .postrow .meta2 { color:var(--muted); font-size:0.8rem; white-space:nowrap; }
+    .badge-draft { font-size:0.68rem; font-weight:700; color:#8a5d00;
+      background:rgba(176,120,20,0.18); padding:2px 8px; border-radius:999px; }
+    @media (prefers-color-scheme: dark){ .badge-draft{ color:#d9a441; background:rgba(217,164,65,0.18);} }
+    .reminder { margin:0 0 0.8rem; }
+
+    .modal { position:fixed; inset:0; background:rgba(6,12,22,0.62);
+      display:flex; align-items:center; justify-content:center; padding:1rem; z-index:50; }
+    .modal[hidden]{ display:none; }
+    .modal .card2 { background:var(--panel); border:1px solid var(--border);
+      border-radius:14px; overflow:hidden; max-width:560px; width:100%;
+      box-shadow:0 20px 50px rgba(0,0,0,0.45); }
+    .modal .card2 img { width:100%; display:block; }
+    .modal .card2 .m { padding:0.9rem 1.1rem; }
+    .modal .card2 .m .u { color:var(--muted); font-size:0.78rem; text-transform:uppercase;
+      letter-spacing:0.05em; margin-top:0.3rem; }
+    .modal .close { margin-top:0.8rem; }
   </style>
 </head>
 <body>
@@ -75,6 +106,7 @@
     <div class="wrap">
       <h1>Admin dashboard</h1>
       <span class="sub">Federico Astolfi · your control panel</span>
+      <button id="install" class="install" hidden>⤓ Install app</button>
       <a class="site" href="/">View site →</a>
     </div>
   </header>
@@ -120,10 +152,17 @@
       <div id="commits"><div class="row muted">Loading recent commits…</div></div>
     </div>
 
+    <h2 class="section">Posts &amp; drafts</h2>
+    <div class="panel">
+      <p class="reminder muted" id="reminder">Loading posts…</p>
+      <div id="posts"></div>
+    </div>
+
     <h2 class="section">Share &amp; SEO</h2>
     <div class="panel">
       <p class="muted" style="margin:0 0 0.7rem;">After publishing, refresh how your link previews look on social platforms.</p>
       <div class="btnrow">
+        <button class="act" id="social">Preview social card</button>
         <button class="act" id="copy">Copy site link</button>
         <a class="act" href="https://www.linkedin.com/post-inspector/inspect/https://federicoastolfi.github.io/" target="_blank" rel="noopener">LinkedIn preview</a>
         <a class="act" href="https://developers.facebook.com/tools/debug/?q=https://federicoastolfi.github.io/" target="_blank" rel="noopener">Facebook debugger</a>
@@ -147,6 +186,18 @@
           <tr><td>Aligned</td><td><code>$$\begin{aligned} a &amp;= b \\ &amp;= c \end{aligned}$$</code></td><td></td></tr>
         </table>
       </details>
+    </div>
+
+    <div class="modal" id="modal" hidden>
+      <div class="card2">
+        <img src="/images/social-banner.png" alt="Social share banner preview">
+        <div class="m">
+          <strong>Federico Astolfi</strong>
+          <div class="muted">PhD student in Quantum Computing at CESQ, University of Strasbourg</div>
+          <div class="u">federicoastolfi.github.io</div>
+          <button class="act close" id="closeModal">Close</button>
+        </div>
+      </div>
     </div>
   </main>
 
@@ -188,6 +239,69 @@
       try { await navigator.clipboard.writeText('https://federicoastolfi.github.io/'); e.target.textContent = 'Copied!'; setTimeout(() => e.target.textContent = 'Copy site link', 1500); }
       catch { e.target.textContent = 'Copy failed'; }
     });
+
+    // PWA: service worker + install button
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('/admin/sw.js').catch(() => {});
+    let deferredPrompt = null;
+    const installBtn = document.getElementById('install');
+    window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; installBtn.hidden = false; });
+    installBtn.addEventListener('click', async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt(); await deferredPrompt.userChoice;
+      deferredPrompt = null; installBtn.hidden = true;
+    });
+    window.addEventListener('appinstalled', () => { installBtn.hidden = true; });
+
+    // Social card modal
+    const modal = document.getElementById('modal');
+    document.getElementById('social').addEventListener('click', () => { modal.hidden = false; });
+    document.getElementById('closeModal').addEventListener('click', () => { modal.hidden = true; });
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.hidden = true; });
+
+    // Posts & drafts: read _posts, count words / reading time, flag drafts
+    function parseFM(text) {
+      const m = text.match(/^---\s*\n([\s\S]*?)\n---\s*\n?([\s\S]*)$/);
+      if (!m) return { fm: {}, body: text };
+      const fm = {};
+      m[1].split('\n').forEach((l) => { const i = l.indexOf(':'); if (i > 0) fm[l.slice(0, i).trim()] = l.slice(i + 1).trim().replace(/^['"]|['"]$/g, ''); });
+      return { fm, body: m[2] };
+    }
+    function countWords(body) {
+      return body.replace(/\$\$[\s\S]*?\$\$/g, ' ').replace(/`[^`]*`/g, ' ')
+        .replace(/[#*_>~\[\]()]/g, ' ').split(/\s+/).filter(Boolean).length;
+    }
+    const esc = (s) => s.replace(/[<>&]/g, (x) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' }[x]));
+    fetch('https://api.github.com/repos/' + REPO + '/contents/_posts', { headers: { 'Accept': 'application/vnd.github+json' } })
+      .then((r) => r.ok ? r.json() : Promise.reject(r.status))
+      .then((files) => {
+        const md = files.filter((f) => f.name.endsWith('.md')).sort((a, b) => b.name.localeCompare(a.name)).slice(0, 8);
+        return Promise.all(md.map((f) => fetch(f.download_url).then((r) => r.text()).then((t) => ({ name: f.name, ...parseFM(t) }))));
+      })
+      .then((posts) => {
+        const box = document.getElementById('posts');
+        box.innerHTML = '';
+        let lastDate = null;
+        posts.forEach((p) => {
+          const w = countWords(p.body);
+          const mins = Math.max(1, Math.round(w / 200));
+          const isDraft = String(p.fm.draft).toLowerCase() === 'true' || /\bTODO\b/.test(p.body);
+          const title = p.fm.title || p.name;
+          const d = p.fm.date ? new Date(p.fm.date) : null;
+          if (!isDraft && d && (!lastDate || d > lastDate)) lastDate = d;
+          const row = document.createElement('div');
+          row.className = 'postrow';
+          row.innerHTML = '<span class="pt">' + esc(title) + (isDraft ? ' <span class="badge-draft">draft</span>' : '') + '</span>' +
+                          '<span class="meta2">' + w + ' words · ' + mins + ' min read</span>';
+          box.appendChild(row);
+        });
+        const rem = document.getElementById('reminder');
+        if (lastDate) {
+          const days = Math.floor((Date.now() - lastDate) / 86400000);
+          rem.textContent = 'Last published post: ' + (days <= 0 ? 'today' : days + ' day' + (days > 1 ? 's' : '') + ' ago') + '  ·  ' + posts.length + ' posts total.';
+        } else { rem.textContent = posts.length + ' posts.'; }
+        rem.classList.remove('muted');
+      })
+      .catch(() => { document.getElementById('reminder').textContent = 'Could not load posts (GitHub rate-limited?).'; });
   </script>
 </body>
 </html>
