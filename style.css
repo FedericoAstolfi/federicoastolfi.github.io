@@ -103,39 +103,10 @@ button:focus-visible {
 /* Header */
 header {
     position: relative;
-    overflow: hidden;
-    background: linear-gradient(180deg, var(--navy-1) 0%, var(--navy-2) 100%);
+    background: transparent;
     color: white;
     padding: 2rem 1rem;
     text-align: center;
-}
-
-/* Slow-floating bubbles behind the header (same on every page → continuity) */
-header::before,
-header::after {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.05);
-    pointer-events: none;
-    z-index: 0;
-}
-
-header::before {
-    width: 340px;
-    height: 340px;
-    top: -150px;
-    left: -80px;
-    animation: floatOrb 12s ease-in-out infinite;
-}
-
-header::after {
-    width: 240px;
-    height: 240px;
-    top: -70px;
-    right: 5%;
-    background: rgba(255,255,255,0.045);
-    animation: floatOrb 10s ease-in-out infinite reverse;
 }
 
 header h1,
@@ -215,28 +186,18 @@ main {
 }
 
 /* Sezione Hero */
-/* Home: header + welcome as ONE continuous navy field, bubbles roam freely */
-.home-hero {
+/* Top band: header (+ home intro). Present on every page.
+   Fixed-pixel gradient stops + top-anchored bubbles => the header
+   region is pixel-identical on every page for seamless navigation. */
+.topband {
     position: relative;
     overflow: hidden;
     width: 100%;
-    background: linear-gradient(160deg, var(--navy-1) 0%, var(--navy-2) 68%, var(--navy-mid) 100%);
+    background: linear-gradient(180deg, var(--navy-1) 0, var(--navy-2) 250px, var(--navy-mid) 560px);
     color: white;
 }
 
-/* inside the wrapper the header is transparent and drops its own bubbles */
-.home-hero > header {
-    position: relative;
-    z-index: 1;
-    background: transparent;
-    overflow: visible;
-}
-.home-hero > header::before,
-.home-hero > header::after {
-    content: none;
-}
-
-/* single bubble layer spanning the whole home hero (not clipped mid-way) */
+/* single bubble layer, anchored to the top so it matches across pages */
 .hero-orbs {
     position: absolute;
     inset: 0;
@@ -248,20 +209,20 @@ main {
     position: absolute;
     display: block;
     border-radius: 50%;
-    background: rgba(255,255,255,0.05);
 }
 .hero-orbs span:nth-child(1) {
     width: 380px;
     height: 380px;
-    top: -70px;
-    left: -90px;
+    top: -95px;
+    left: -100px;
+    background: rgba(255,255,255,0.05);
     animation: floatOrb 13s ease-in-out infinite;
 }
 .hero-orbs span:nth-child(2) {
-    width: 320px;
-    height: 320px;
-    bottom: -90px;
-    right: 6%;
+    width: 300px;
+    height: 300px;
+    top: -55px;
+    right: 4%;
     background: rgba(255,255,255,0.045);
     animation: floatOrb 11s ease-in-out infinite reverse;
 }
