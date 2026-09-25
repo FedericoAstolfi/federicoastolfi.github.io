@@ -103,10 +103,45 @@ button:focus-visible {
 /* Header */
 header {
     position: relative;
+    overflow: hidden;
     background: linear-gradient(180deg, var(--navy-1) 0%, var(--navy-2) 100%);
     color: white;
     padding: 2rem 1rem;
     text-align: center;
+}
+
+/* Slow-floating bubbles behind the header (same on every page → continuity) */
+header::before,
+header::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    pointer-events: none;
+    z-index: 0;
+}
+
+header::before {
+    width: 340px;
+    height: 340px;
+    top: -150px;
+    left: -80px;
+    animation: floatOrb 12s ease-in-out infinite;
+}
+
+header::after {
+    width: 240px;
+    height: 240px;
+    top: -70px;
+    right: 5%;
+    background: rgba(255,255,255,0.045);
+    animation: floatOrb 10s ease-in-out infinite reverse;
+}
+
+header h1,
+header nav {
+    position: relative;
+    z-index: 1;
 }
 
 header h1 {
@@ -121,6 +156,7 @@ header h1 {
     position: absolute;
     top: 1rem;
     right: 1rem;
+    z-index: 2;
     width: 38px;
     height: 38px;
     border-radius: 50%;
@@ -182,7 +218,14 @@ main {
 .hero {
     text-align: center;
     padding: 3.5rem 3rem 3rem;
-    margin: -2rem -2rem 3rem;
+    /* full-bleed: span the whole viewport width to match the header */
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-top: -2rem;
+    margin-bottom: 3rem;
     background: linear-gradient(180deg, var(--navy-2) 0%, var(--navy-1) 130%);
     color: white;
     border-bottom: none;
@@ -752,7 +795,8 @@ footer p {
 
     .hero {
         padding: 2.8rem 1.5rem 2.5rem;
-        margin: -2rem -1rem 2.5rem;
+        margin-top: -2rem;
+        margin-bottom: 2.5rem;
     }
 
     .pub-item {
