@@ -69,6 +69,10 @@
 </head>
 <body>
     <a href="#main" class="skip-link">Skip to content</a>
+    {% if page.url == '/' %}
+    <div class="home-hero">
+        <div class="hero-orbs" aria-hidden="true"><span></span><span></span></div>
+    {% endif %}
     <header>
         <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
             <span class="icon-moon" aria-hidden="true">
@@ -87,6 +91,13 @@
             <a href="{{ '/blog' | relative_url }}" {% if page.url contains '/blog' %}class="nav-active"{% endif %}>Blog</a>
         </nav>
     </header>
+    {% if page.url == '/' %}
+        <section class="hero-intro">
+            <h2>Hi, welcome to my web space!</h2>
+            <p>PhD student in Quantum Computing at <a href="https://www.cesq.eu/" target="_blank">CESQ</a>, University of Strasbourg. I work at the intersection of Quantum Optimal Control and Quantum Error Correction, with a background in pure Mathematics.</p>
+        </section>
+    </div>
+    {% endif %}
 
     <main id="main">
         {{ content }}
@@ -149,7 +160,7 @@
     }
 
     // Typewriter effect for hero title (skipped when reduced motion is requested)
-    const heroTitle = document.querySelector('.hero h2');
+    const heroTitle = document.querySelector('.hero-intro h2');
     if (heroTitle && !reduceMotion) {
         const text = heroTitle.textContent.trim();
         heroTitle.textContent = '';

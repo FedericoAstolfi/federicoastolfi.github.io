@@ -3,11 +3,6 @@ title: Home
 layout: default
 ---
 
-<section class="hero">
-    <h2>Hi, welcome to my web space!</h2>
-    <p>PhD student in Quantum Computing at <a href="https://www.cesq.eu/" target="_blank">CESQ</a>, University of Strasbourg. I work at the intersection of Quantum Optimal Control and Quantum Error Correction, with a background in pure Mathematics.</p>
-</section>
-
 <section class="content">
     <h3>Research Projects</h3>
     <div class="carousel">

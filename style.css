@@ -215,22 +215,84 @@ main {
 }
 
 /* Sezione Hero */
-.hero {
-    text-align: center;
-    padding: 3.5rem 3rem 3rem;
-    /* full-bleed: span the whole viewport width to match the header */
-    width: 100vw;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    margin-top: -2rem;
-    margin-bottom: 3rem;
-    background: linear-gradient(180deg, var(--navy-2) 0%, var(--navy-1) 130%);
-    color: white;
-    border-bottom: none;
+/* Home: header + welcome as ONE continuous navy field, bubbles roam freely */
+.home-hero {
     position: relative;
     overflow: hidden;
+    width: 100%;
+    background: linear-gradient(160deg, var(--navy-1) 0%, var(--navy-2) 68%, var(--navy-mid) 100%);
+    color: white;
+}
+
+/* inside the wrapper the header is transparent and drops its own bubbles */
+.home-hero > header {
+    position: relative;
+    z-index: 1;
+    background: transparent;
+    overflow: visible;
+}
+.home-hero > header::before,
+.home-hero > header::after {
+    content: none;
+}
+
+/* single bubble layer spanning the whole home hero (not clipped mid-way) */
+.hero-orbs {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+.hero-orbs span {
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+}
+.hero-orbs span:nth-child(1) {
+    width: 380px;
+    height: 380px;
+    top: -70px;
+    left: -90px;
+    animation: floatOrb 13s ease-in-out infinite;
+}
+.hero-orbs span:nth-child(2) {
+    width: 320px;
+    height: 320px;
+    bottom: -90px;
+    right: 6%;
+    background: rgba(255,255,255,0.045);
+    animation: floatOrb 11s ease-in-out infinite reverse;
+}
+
+.hero-intro {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 1.4rem 2rem 3.6rem;
+}
+.hero-intro h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.6rem;
+    margin-bottom: 1.1rem;
+    min-height: 1.2em;
+}
+.hero-intro p {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.88);
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.85;
+}
+.hero-intro p a {
+    color: white;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(255,255,255,0.5);
+}
+.hero-intro p a:hover {
+    text-decoration-color: white;
 }
 
 .hero::before {
@@ -789,14 +851,12 @@ footer p {
         padding: 0 1rem;
     }
 
-    .hero h2 {
-        font-size: 1.8rem;
+    .hero-intro {
+        padding: 1rem 1.2rem 2.8rem;
     }
 
-    .hero {
-        padding: 2.8rem 1.5rem 2.5rem;
-        margin-top: -2rem;
-        margin-bottom: 2.5rem;
+    .hero-intro h2 {
+        font-size: 1.8rem;
     }
 
     .pub-item {
