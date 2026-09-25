@@ -8,6 +8,10 @@ url: "https://federicoastolfi.github.io"
 markdown: kramdown
 theme: minima
 
+# Let MathJax handle LaTeX: kramdown leaves $...$ / $$...$$ untouched
+kramdown:
+  math_engine: null
+
 # Exclude from processing
 exclude:
   - Gemfile
@@ -31,6 +35,7 @@ defaults:
       type: "posts"
     values:
       layout: "post"
+      math: true
   - scope:
       path: ""
     values:
