@@ -6,5 +6,3 @@ categories: ''
 ---
 
 Some topics in maths are just abstract as they are and they don't prove themselves useful to anything. It is just like it is. And this is okay, you can have it and crack your head on the most absurdly conundrums just for the sake of it. Some other times, in maths we can find beautifully formalized objects that are just perfectly shaped and sharped to be employed for applications. And if you ask me, quantum computing is a great application for the functional generalization of derivatives on _Banach spaces_: I am referring to the **Frèchet** and **Gateaux** derivatives.
-
-Give me some time and I will tell you about them. First gotta study em myself
