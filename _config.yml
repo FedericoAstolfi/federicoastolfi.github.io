@@ -7,6 +7,8 @@ url: "https://federicoastolfi.github.io"
 # Build settings
 markdown: kramdown
 theme: minima
+timezone: Europe/Paris
+future: true   # publish posts even if their timestamp is slightly ahead
 
 # Let MathJax handle LaTeX: kramdown leaves $...$ / $$...$$ untouched
 kramdown:
