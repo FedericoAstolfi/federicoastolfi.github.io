@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin dashboard — Federico Astolfi</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <style>
+    :root {
+      --bg:#f2f4f7; --panel:#ffffff; --ink:#2f3542; --muted:#6b7280;
+      --border:#e2e6ec; --navy1:#152d52; --navy2:#1e4585; --accent:#2a5cad;
+      --shadow:rgba(20,40,80,0.10);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#0f1622; --panel:#16202e; --ink:#d8dfe9; --muted:#93a0b0;
+              --border:#29354a; --accent:#6ea3e6; --shadow:rgba(0,0,0,0.45); }
+    }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink);
+      font-family:'Inter','Segoe UI',system-ui,sans-serif; line-height:1.6; }
+    header.top {
+      background: linear-gradient(180deg, var(--navy1), var(--navy2));
+      color:#fff; padding:1.4rem 1.2rem;
+    }
+    header.top .wrap { max-width:960px; margin:0 auto; display:flex;
+      align-items:baseline; gap:0.8rem; flex-wrap:wrap; }
+    header.top h1 { font-family:Georgia,serif; font-size:1.4rem; margin:0; }
+    header.top .sub { color:rgba(255,255,255,0.8); font-size:0.85rem; }
+    header.top a.site { color:#cfe0f7; font-size:0.85rem; margin-left:auto; text-decoration:none; }
+    main { max-width:960px; margin:0 auto; padding:1.4rem 1.2rem 3rem; }
+    h2.section { font-size:0.75rem; letter-spacing:0.12em; text-transform:uppercase;
+      color:var(--muted); margin:1.8rem 0 0.8rem; font-weight:700; }
+
+    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.9rem; }
+    @media (max-width:720px){ .grid { grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:440px){ .grid { grid-template-columns:1fr; } }
+    a.tile {
+      display:flex; flex-direction:column; gap:0.35rem; text-decoration:none;
+      background:var(--panel); border:1px solid var(--border); border-radius:12px;
+      padding:1rem 1.1rem; color:var(--ink); transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    }
+    a.tile:hover { transform:translateY(-3px); box-shadow:0 8px 20px var(--shadow); border-color:var(--accent); }
+    a.tile .t { font-weight:600; }
+    a.tile .d { font-size:0.82rem; color:var(--muted); }
+    a.tile .ico { width:26px; height:26px; color:var(--accent); }
+
+    .panel { background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:1.1rem 1.2rem; }
+    .row { display:flex; gap:0.8rem; align-items:center; padding:0.5rem 0; border-top:1px solid var(--border); font-size:0.9rem; }
+    .row:first-child { border-top:none; }
+    .row .msg { flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .row .when { color:var(--muted); font-size:0.82rem; white-space:nowrap; }
+    .row a { color:var(--accent); text-decoration:none; font-family:ui-monospace,Menlo,Consolas,monospace; font-size:0.8rem; }
+    .deploy { display:flex; align-items:center; gap:0.6rem; margin-bottom:0.9rem; font-size:0.92rem; }
+    .dot { width:10px; height:10px; border-radius:50%; background:#1a7f4b; flex-shrink:0; }
+    .muted { color:var(--muted); }
+
+    .btnrow { display:flex; gap:0.6rem; flex-wrap:wrap; }
+    button.act, a.act {
+      font:inherit; font-size:0.86rem; cursor:pointer; text-decoration:none;
+      background:transparent; border:1px solid var(--border); color:var(--ink);
+      border-radius:8px; padding:0.45rem 0.9rem; transition:border-color .15s ease, background .15s ease;
+    }
+    button.act:hover, a.act:hover { border-color:var(--accent); }
+
+    details.cheat { margin-top:0.4rem; }
+    details.cheat summary { cursor:pointer; font-weight:600; }
+    table.cheat { width:100%; border-collapse:collapse; margin-top:0.8rem; font-size:0.88rem; }
+    table.cheat td { padding:0.35rem 0.6rem; border-bottom:1px solid var(--border); vertical-align:top; }
+    table.cheat code { background:var(--bg); padding:0.1em 0.4em; border-radius:4px;
+      font-family:ui-monospace,Menlo,Consolas,monospace; font-size:0.88em; }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <h1>Admin dashboard</h1>
+      <span class="sub">Federico Astolfi · your control panel</span>
+      <a class="site" href="/">View site →</a>
+    </div>
+  </header>
+
+  <main>
+    <h2 class="section">Quick actions</h2>
+    <div class="grid">
+      <a class="tile" href="/admin/#/collections/posts/new">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+        <span class="t">New blog post</span>
+        <span class="d">Opens Sveltia on a fresh post</span>
+      </a>
+      <a class="tile" href="/admin/">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+        <span class="t">Content manager</span>
+        <span class="d">Edit posts, pages, publications</span>
+      </a>
+      <a class="tile" href="/admin/preview.html">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19l6-6 4 4 6-8"/><path d="M4 5h4M4 9h7"/></svg>
+        <span class="t">Formula preview</span>
+        <span class="d">Live Markdown + LaTeX</span>
+      </a>
+      <a class="tile" href="/blog">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+        <span class="t">The blog</span>
+        <span class="d">See published posts</span>
+      </a>
+      <a class="tile" href="https://analytics.google.com/" target="_blank" rel="noopener">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20V10M12 20V4M19 20v-7"/></svg>
+        <span class="t">Analytics</span>
+        <span class="d">Google Analytics traffic</span>
+      </a>
+      <a class="tile" href="https://github.com/FedericoAstolfi/federicoastolfi.github.io" target="_blank" rel="noopener">
+        <svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.26-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.38.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
+        <span class="t">GitHub repo</span>
+        <span class="d">Source &amp; commit history</span>
+      </a>
+    </div>
+
+    <h2 class="section">Deploy &amp; recent activity</h2>
+    <div class="panel">
+      <div class="deploy"><span class="dot"></span><span id="deploy-line" class="muted">Checking last deploy…</span></div>
+      <div id="commits"><div class="row muted">Loading recent commits…</div></div>
+    </div>
+
+    <h2 class="section">Share &amp; SEO</h2>
+    <div class="panel">
+      <p class="muted" style="margin:0 0 0.7rem;">After publishing, refresh how your link previews look on social platforms.</p>
+      <div class="btnrow">
+        <button class="act" id="copy">Copy site link</button>
+        <a class="act" href="https://www.linkedin.com/post-inspector/inspect/https://federicoastolfi.github.io/" target="_blank" rel="noopener">LinkedIn preview</a>
+        <a class="act" href="https://developers.facebook.com/tools/debug/?q=https://federicoastolfi.github.io/" target="_blank" rel="noopener">Facebook debugger</a>
+        <a class="act" href="https://cards-dev.twitter.com/validator" target="_blank" rel="noopener">X / Twitter card</a>
+      </div>
+    </div>
+
+    <h2 class="section">LaTeX cheat-sheet</h2>
+    <div class="panel">
+      <details class="cheat" open>
+        <summary>Common syntax (use in posts &amp; in the formula preview)</summary>
+        <table class="cheat">
+          <tr><td>Inline</td><td><code>$ ... $</code></td><td><code>energy $E = mc^2$</code></td></tr>
+          <tr><td>Display</td><td><code>$$ ... $$</code></td><td>centered on its own line</td></tr>
+          <tr><td>Fraction</td><td><code>\frac{a}{b}</code></td><td></td></tr>
+          <tr><td>Sub / super</td><td><code>x_i</code> · <code>x^2</code> · <code>x_{ij}</code></td><td></td></tr>
+          <tr><td>Sum / lim</td><td><code>\sum_{i=1}^{n}</code> · <code>\lim_{t\to 0}</code></td><td></td></tr>
+          <tr><td>Bra-ket</td><td><code>\langle\psi| \; |\phi\rangle</code></td><td></td></tr>
+          <tr><td>Norm</td><td><code>\lVert x \rVert</code></td><td></td></tr>
+          <tr><td>Greek</td><td><code>\alpha \beta \psi \hbar</code></td><td></td></tr>
+          <tr><td>Aligned</td><td><code>$$\begin{aligned} a &amp;= b \\ &amp;= c \end{aligned}$$</code></td><td></td></tr>
+        </table>
+      </details>
+    </div>
+  </main>
+
+  <script>
+    const REPO = 'FedericoAstolfi/federicoastolfi.github.io';
+
+    function ago(iso) {
+      const s = Math.floor((Date.now() - new Date(iso)) / 1000);
+      const u = [['year',31536000],['month',2592000],['day',86400],['hour',3600],['minute',60]];
+      for (const [name, secs] of u) { const n = Math.floor(s / secs); if (n >= 1) return n + ' ' + name + (n>1?'s':'') + ' ago'; }
+      return 'just now';
+    }
+
+    fetch('https://api.github.com/repos/' + REPO + '/commits?per_page=6', { headers: { 'Accept': 'application/vnd.github+json' } })
+      .then(r => r.ok ? r.json() : Promise.reject(r.status))
+      .then(list => {
+        const first = list[0];
+        document.getElementById('deploy-line').textContent =
+          'Last deploy: ' + ago(first.commit.author.date) + ' — “' + first.commit.message.split('\n')[0] + '”';
+        document.getElementById('deploy-line').classList.remove('muted');
+        const box = document.getElementById('commits');
+        box.innerHTML = '';
+        list.forEach(c => {
+          const el = document.createElement('div');
+          el.className = 'row';
+          const short = c.sha.slice(0, 7);
+          el.innerHTML = '<span class="msg">' + c.commit.message.split('\n')[0].replace(/[<>&]/g, x => ({'<':'&lt;','>':'&gt;','&':'&amp;'}[x])) + '</span>' +
+                         '<span class="when">' + ago(c.commit.author.date) + '</span>' +
+                         '<a href="' + c.html_url + '" target="_blank" rel="noopener">' + short + '</a>';
+          box.appendChild(el);
+        });
+      })
+      .catch(() => {
+        document.getElementById('deploy-line').textContent = 'Could not reach GitHub (rate-limited?). The site itself is fine.';
+        document.getElementById('commits').innerHTML = '';
+      });
+
+    document.getElementById('copy').addEventListener('click', async (e) => {
+      try { await navigator.clipboard.writeText('https://federicoastolfi.github.io/'); e.target.textContent = 'Copied!'; setTimeout(() => e.target.textContent = 'Copy site link', 1500); }
+      catch { e.target.textContent = 'Copy failed'; }
+    });
+  </script>
+</body>
+</html>
