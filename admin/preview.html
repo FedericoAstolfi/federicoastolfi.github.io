@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live formula preview — Federico Astolfi</title>
+  <style>
+    :root {
+      --bg: #f6f8fa; --panel: #ffffff; --ink: #2f3542; --muted: #6b7280;
+      --border: #e2e6ec; --navy1: #152d52; --navy2: #1e4585; --accent: #2a5cad;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#0f1622; --panel:#16202e; --ink:#d8dfe9; --muted:#93a0b0;
+              --border:#29354a; --accent:#6ea3e6; }
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; background: var(--bg); color: var(--ink);
+      font-family: 'Inter','Segoe UI',system-ui,sans-serif; line-height: 1.7;
+      display: flex; flex-direction: column;
+    }
+    header {
+      background: linear-gradient(180deg, var(--navy1), var(--navy2));
+      color: #fff; padding: 0.9rem 1.2rem; display: flex; align-items: baseline;
+      gap: 0.8rem; flex-wrap: wrap;
+    }
+    header h1 { font-family: Georgia, serif; font-size: 1.15rem; margin: 0; }
+    header .hint { font-size: 0.82rem; color: rgba(255,255,255,0.8); }
+    header a { color: #cfe0f7; font-size: 0.82rem; margin-left: auto; }
+    main { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+           background: var(--border); min-height: 0; }
+    @media (max-width: 760px) { main { grid-template-columns: 1fr; } }
+    .pane { background: var(--panel); display: flex; flex-direction: column; min-height: 0; }
+    .pane > .label {
+      font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); padding: 0.6rem 1rem 0.3rem; font-weight: 700;
+    }
+    textarea {
+      flex: 1; border: none; resize: none; padding: 0.4rem 1rem 1rem;
+      font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.95rem;
+      line-height: 1.6; background: var(--panel); color: var(--ink); outline: none;
+    }
+    .out { flex: 1; overflow-y: auto; padding: 0.4rem 1.3rem 2rem; }
+    .out h1,.out h2,.out h3 { font-family: Georgia, serif; color: var(--accent); }
+    .out h2 { margin-top: 1.6rem; }
+    .out a { color: var(--accent); }
+    .out code { background: var(--bg); padding: 0.15em 0.4em; border-radius: 4px; font-size: 0.9em; }
+    .out pre { background: var(--bg); padding: 1rem; border-radius: 8px; overflow-x: auto; }
+    .out blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; color: var(--muted); margin: 1rem 0; }
+    footer { padding: 0.5rem 1.2rem; font-size: 0.8rem; color: var(--muted);
+             background: var(--panel); border-top: 1px solid var(--border); }
+    footer button { font: inherit; font-size: 0.8rem; cursor: pointer; margin-left: 0.6rem;
+             background: transparent; border: 1px solid var(--border); color: var(--ink);
+             border-radius: 6px; padding: 0.2rem 0.7rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Live formula preview</h1>
+    <span class="hint">Type Markdown + LaTeX — it renders exactly like a blog post. Keep this open next to Sveltia.</span>
+    <a href="/admin/">← back to CMS</a>
+  </header>
+
+  <main>
+    <section class="pane">
+      <div class="label">Markdown + LaTeX</div>
+      <textarea id="src" spellcheck="false" placeholder="Write here…
+
+Inline math: the state $\lvert\psi\rangle = \alpha\lvert 0\rangle + \beta\lvert 1\rangle$.
+
+Display math:
+
+$$ i\hbar\,\partial_t \lvert\psi\rangle = H\lvert\psi\rangle $$
+"></textarea>
+    </section>
+    <section class="pane">
+      <div class="label">Preview</div>
+      <div class="out" id="out"></div>
+    </section>
+  </main>
+
+  <footer>
+    Delimiters: inline <code>$ … $</code> · display <code>$$ … $$</code>. Underscores and backslashes inside math are safe.
+    <button id="clear" type="button">Clear</button>
+  </footer>
+
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      svg: { fontCache: 'global' },
+      startup: { typeset: false }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+  <script>
+    const src = document.getElementById('src');
+    const out = document.getElementById('out');
+
+    // Protect math spans from Markdown (mirrors the site's kramdown setup),
+    // render Markdown, restore the math, then let MathJax typeset it.
+    function render() {
+      let text = src.value;
+      const store = [];
+      const keep = (m) => { store.push(m); return '@@MATH' + (store.length - 1) + '@@'; };
+      text = text.replace(/\$\$[\s\S]+?\$\$/g, keep);        // display first
+      text = text.replace(/\$(?!\s)[^$\n]*?(?!\s)\$/g, keep); // then inline
+      let html;
+      try { html = marked.parse(text); } catch (e) { html = text; }
+      html = html.replace(/@@MATH(\d+)@@/g, (_, i) => store[+i]);
+      out.innerHTML = html;
+      if (window.MathJax && MathJax.typesetPromise) {
+        MathJax.typesetClear && MathJax.typesetClear([out]);
+        MathJax.typesetPromise([out]).catch(() => {});
+      }
+      try { localStorage.setItem('mathdraft', src.value); } catch (e) {}
+    }
+
+    let t;
+    src.addEventListener('input', () => { clearTimeout(t); t = setTimeout(render, 250); });
+    document.getElementById('clear').addEventListener('click', () => { src.value = ''; render(); src.focus(); });
+
+    try { const saved = localStorage.getItem('mathdraft'); if (saved) src.value = saved; } catch (e) {}
+    // Render once MathJax is ready
+    function boot() {
+      if (window.MathJax && MathJax.typesetPromise) render();
+      else setTimeout(boot, 120);
+    }
+    boot();
+  </script>
+</body>
+</html>
