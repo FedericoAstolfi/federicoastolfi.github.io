@@ -636,7 +636,6 @@ main {
 }
 .edu-timeline .edu-item:hover,
 .talks-timeline .talk-item:hover {
-    transform: translateX(3px);
     border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
     box-shadow: 0 6px 22px var(--shadow-md);
 }
@@ -651,18 +650,14 @@ main {
     height: 13px;
     border-radius: 50%;
     background: var(--accent);
-    box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 15%, transparent),
-                0 0 12px color-mix(in srgb, var(--accent) 55%, transparent);
-    animation: qubitPulse 3.4s ease-in-out infinite;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent),
+                0 0 7px color-mix(in srgb, var(--accent) 38%, transparent);
+    transition: box-shadow 0.4s ease;
 }
 .edu-timeline .edu-item:hover::before,
 .talks-timeline .talk-item:hover::before {
-    box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 24%, transparent),
-                0 0 18px color-mix(in srgb, var(--accent) 85%, transparent);
-}
-@keyframes qubitPulse {
-    0%, 100% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 13%, transparent), 0 0 10px color-mix(in srgb, var(--accent) 45%, transparent); }
-    50%      { box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 20%, transparent), 0 0 16px color-mix(in srgb, var(--accent) 70%, transparent); }
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 22%, transparent),
+                0 0 16px color-mix(in srgb, var(--accent) 78%, transparent);
 }
 
 .edu-year {
