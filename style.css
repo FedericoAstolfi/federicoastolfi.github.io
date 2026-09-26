@@ -600,28 +600,69 @@ main {
 }
 
 /* Education timeline */
-.edu-timeline {
-    margin: 1rem 0;
-    border-left: 3px solid var(--accent);
-    padding-left: 1.5rem;
-}
-
-.edu-item {
-    display: flex;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
+/* Qubit timeline (glass + glow) — shared by Education & Talks */
+.edu-timeline,
+.talks-timeline {
+    margin: 1.2rem 0;
     position: relative;
+    padding-left: 2rem;
 }
-
-.edu-item::before {
+.edu-timeline::before,
+.talks-timeline::before {
     content: '';
     position: absolute;
-    left: -1.82rem;
-    top: 0.4rem;
-    width: 10px;
-    height: 10px;
+    left: 6px;
+    top: 10px;
+    bottom: 10px;
+    width: 2px;
+    border-radius: 2px;
+    background: linear-gradient(180deg,
+        color-mix(in srgb, var(--accent) 85%, transparent),
+        color-mix(in srgb, var(--accent) 22%, transparent));
+    box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 38%, transparent);
+}
+
+.edu-item,
+.talk-item {
+    display: flex;
+    gap: 1.25rem;
+    margin-bottom: 1rem;
+    position: relative;
+    background: color-mix(in srgb, var(--accent) 6%, transparent);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0.9rem 1.15rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.edu-timeline .edu-item:hover,
+.talks-timeline .talk-item:hover {
+    transform: translateX(3px);
+    border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+    box-shadow: 0 6px 22px var(--shadow-md);
+}
+
+.edu-item::before,
+.talk-item::before {
+    content: '';
+    position: absolute;
+    left: -1.97rem;
+    top: 1.05rem;
+    width: 13px;
+    height: 13px;
     border-radius: 50%;
     background: var(--accent);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 15%, transparent),
+                0 0 12px color-mix(in srgb, var(--accent) 55%, transparent);
+    animation: qubitPulse 3.4s ease-in-out infinite;
+}
+.edu-timeline .edu-item:hover::before,
+.talks-timeline .talk-item:hover::before {
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 24%, transparent),
+                0 0 18px color-mix(in srgb, var(--accent) 85%, transparent);
+}
+@keyframes qubitPulse {
+    0%, 100% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 13%, transparent), 0 0 10px color-mix(in srgb, var(--accent) 45%, transparent); }
+    50%      { box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 20%, transparent), 0 0 16px color-mix(in srgb, var(--accent) 70%, transparent); }
 }
 
 .edu-year {
@@ -838,29 +879,7 @@ footer p {
 }
 
 /* Talks timeline */
-.talks-timeline {
-    margin: 1rem 0;
-    border-left: 3px solid var(--accent);
-    padding-left: 1.5rem;
-}
-
-.talk-item {
-    display: flex;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-    position: relative;
-}
-
-.talk-item::before {
-    content: '';
-    position: absolute;
-    left: -1.82rem;
-    top: 0.4rem;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--accent);
-}
+/* .talks-timeline / .talk-item / dot styled together with .edu-* above */
 
 .talk-date {
     font-weight: 700;
