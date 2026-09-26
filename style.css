@@ -652,12 +652,13 @@ main {
     background: var(--accent);
     box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent),
                 0 0 7px color-mix(in srgb, var(--accent) 38%, transparent);
-    transition: box-shadow 0.4s ease;
+    animation: qubitPulse 3.6s ease-in-out infinite;
 }
-.edu-timeline .edu-item:hover::before,
-.talks-timeline .talk-item:hover::before {
-    box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 22%, transparent),
-                0 0 16px color-mix(in srgb, var(--accent) 78%, transparent);
+@keyframes qubitPulse {
+    0%, 100% { box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 11%, transparent),
+                           0 0 6px color-mix(in srgb, var(--accent) 34%, transparent); }
+    50%      { box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 16%, transparent),
+                           0 0 11px color-mix(in srgb, var(--accent) 55%, transparent); }
 }
 
 .edu-year {
