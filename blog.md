@@ -13,7 +13,8 @@ title: Blog
           <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
         </h3>
         <p class="post-meta">{{ post.date | date: "%B %d, %Y" }}</p>
-        <p>{{ post.excerpt }}</p>
+        <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 28 }}</p>
+        <a class="read-more" href="{{ post.url | relative_url }}">Read more →</a>
       </li>
     {% endfor %}
   </ul>

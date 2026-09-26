@@ -1284,6 +1284,25 @@ footer p {
     margin-bottom: 0.5rem;
 }
 
+.post-excerpt {
+    color: var(--text-soft);
+    margin-bottom: 0.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.post-list .read-more {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+.post-list .read-more:hover {
+    text-decoration: underline;
+}
+
 .post {
     max-width: 720px;
     margin: 0 auto;
