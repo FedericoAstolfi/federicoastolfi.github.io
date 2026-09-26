@@ -70,7 +70,7 @@
 <body>
     <a href="#main" class="skip-link">Skip to content</a>
     <div class="topband{% if page.url == '/' %} is-home{% endif %}">
-        <div class="hero-orbs" aria-hidden="true"><span></span><span></span></div>
+        <canvas class="hero-canvas" aria-hidden="true"></canvas>
         <header>
         <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
             <span class="icon-moon" aria-hidden="true">
@@ -121,7 +121,23 @@
             </a>
         </div>
         <p>&copy; 2026 {{ site.title }}</p>
+        <p class="kbd-hint">Press <kbd>⌘K</kbd> / <kbd>Ctrl K</kbd> to search</p>
     </footer>
+
+    <div class="cmdk" id="cmdk" hidden role="dialog" aria-modal="true" aria-label="Command palette">
+      <div class="cmdk-box">
+        <input type="text" placeholder="Search pages and posts…   (Esc to close)" aria-label="Search the site">
+        <ul role="listbox"></ul>
+      </div>
+    </div>
+
+    <script>
+    window.CMDK_ITEMS = [
+    {% assign cmdk_pages = site.pages | where_exp: "p", "p.title" %}{% for p in cmdk_pages %}{ label: {{ p.title | jsonify }}, url: {{ p.url | relative_url | jsonify }}, kind: "Page" },
+    {% endfor %}{% for post in site.posts %}{ label: {{ post.title | jsonify }}, url: {{ post.url | relative_url | jsonify }}, kind: "Post" },
+    {% endfor %}];
+    </script>
+
     <script>
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -237,6 +253,109 @@
             if (Math.abs(diff) > 50) goTo(current + (diff > 0 ? 1 : -1));
         });
     });
+
+    // Interactive hero: a drifting particle constellation (qubits + graph edges)
+    (function () {
+        const canvas = document.querySelector('.hero-canvas');
+        if (!canvas) return;
+        const band = canvas.parentElement;
+        const ctx = canvas.getContext('2d');
+        let w = 0, h = 0, parts = [], raf = null;
+        const mouse = { x: -9999, y: -9999 };
+
+        function build() {
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            w = band.clientWidth; h = band.clientHeight;
+            canvas.width = w * dpr; canvas.height = h * dpr;
+            canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            const n = Math.max(14, Math.min(72, Math.round(w * h / 13000)));
+            parts = Array.from({ length: n }, () => ({
+                x: Math.random() * w, y: Math.random() * h,
+                vx: (Math.random() - 0.5) * 0.22, vy: (Math.random() - 0.5) * 0.22,
+                r: Math.random() * 1.6 + 0.7
+            }));
+        }
+        function frame() {
+            ctx.clearRect(0, 0, w, h);
+            for (const p of parts) {
+                p.x += p.vx; p.y += p.vy;
+                if (p.x < 0 || p.x > w) p.vx *= -1;
+                if (p.y < 0 || p.y > h) p.vy *= -1;
+                const dx = p.x - mouse.x, dy = p.y - mouse.y, d = Math.hypot(dx, dy);
+                if (d < 110 && d > 0) { const f = (1 - d / 110) * 0.8; p.x += dx / d * f; p.y += dy / d * f; }
+            }
+            for (let i = 0; i < parts.length; i++) {
+                for (let j = i + 1; j < parts.length; j++) {
+                    const a = parts[i], b = parts[j], d = Math.hypot(a.x - b.x, a.y - b.y);
+                    if (d < 120) {
+                        ctx.strokeStyle = 'rgba(255,255,255,' + (0.09 * (1 - d / 120)).toFixed(3) + ')';
+                        ctx.lineWidth = 1;
+                        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+                    }
+                }
+            }
+            ctx.fillStyle = 'rgba(255,255,255,0.55)';
+            for (const p of parts) { ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.283); ctx.fill(); }
+            if (!reduceMotion) raf = requestAnimationFrame(frame);
+        }
+        build(); frame();
+        window.addEventListener('resize', () => { build(); if (reduceMotion) frame(); });
+        window.addEventListener('mousemove', (e) => { const r = band.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; });
+        window.addEventListener('mouseout', () => { mouse.x = -9999; mouse.y = -9999; });
+    })();
+
+    // Command palette (⌘/Ctrl + K)
+    (function () {
+        const overlay = document.getElementById('cmdk');
+        if (!overlay) return;
+        const input = overlay.querySelector('input');
+        const list = overlay.querySelector('ul');
+        const base = (window.CMDK_ITEMS || []);
+        const actions = [{
+            label: 'Toggle dark / light theme', kind: 'Action', run: () => {
+                const r = document.documentElement;
+                const n = r.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                r.setAttribute('data-theme', n);
+                try { localStorage.setItem('theme', n); } catch (e) {}
+            }
+        }];
+        const esc = (s) => s.replace(/[<>&]/g, (x) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' }[x]));
+        let items = [], sel = 0;
+        function render(q) {
+            q = q.trim().toLowerCase();
+            items = base.concat(actions).filter((it) => it.label.toLowerCase().includes(q));
+            sel = 0; list.innerHTML = '';
+            items.forEach((it, i) => {
+                const li = document.createElement('li');
+                li.setAttribute('role', 'option');
+                if (i === 0) li.setAttribute('aria-selected', 'true');
+                li.innerHTML = '<span>' + esc(it.label) + '</span><span class="k">' + it.kind + '</span>';
+                li.addEventListener('click', () => choose(it));
+                list.appendChild(li);
+            });
+        }
+        function open() { overlay.hidden = false; input.value = ''; render(''); setTimeout(() => input.focus(), 0); }
+        function close() { overlay.hidden = true; }
+        function choose(it) { close(); if (it.run) it.run(); else if (it.url) location.href = it.url; }
+        function move(d) {
+            if (!items.length) return;
+            sel = (sel + d + items.length) % items.length;
+            [...list.children].forEach((li, i) => li.setAttribute('aria-selected', i === sel ? 'true' : 'false'));
+            const el = list.children[sel]; if (el) el.scrollIntoView({ block: 'nearest' });
+        }
+        document.addEventListener('keydown', (e) => {
+            if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); overlay.hidden ? open() : close(); return; }
+            if (overlay.hidden) return;
+            if (e.key === 'Escape') close();
+            else if (e.key === 'ArrowDown') { e.preventDefault(); move(1); }
+            else if (e.key === 'ArrowUp') { e.preventDefault(); move(-1); }
+            else if (e.key === 'Enter') { e.preventDefault(); if (items[sel]) choose(items[sel]); }
+        });
+        input.addEventListener('input', () => render(input.value));
+        overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+        document.querySelectorAll('.kbd-hint').forEach((el) => el.addEventListener('click', open));
+    })();
     </script>
 </body>
 </html>

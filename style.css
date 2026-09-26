@@ -197,34 +197,14 @@ main {
     color: white;
 }
 
-/* single bubble layer, anchored to the top so it matches across pages */
-.hero-orbs {
+/* interactive particle constellation behind the top band */
+.hero-canvas {
     position: absolute;
     inset: 0;
-    overflow: hidden;
-    pointer-events: none;
+    width: 100%;
+    height: 100%;
     z-index: 0;
-}
-.hero-orbs span {
-    position: absolute;
-    display: block;
-    border-radius: 50%;
-}
-.hero-orbs span:nth-child(1) {
-    width: 380px;
-    height: 380px;
-    top: -95px;
-    left: -100px;
-    background: rgba(255,255,255,0.05);
-    animation: floatOrb 13s ease-in-out infinite;
-}
-.hero-orbs span:nth-child(2) {
-    width: 300px;
-    height: 300px;
-    top: -55px;
-    right: 4%;
-    background: rgba(255,255,255,0.045);
-    animation: floatOrb 11s ease-in-out infinite reverse;
+    pointer-events: none;
 }
 
 .hero-intro {
@@ -1377,6 +1357,81 @@ footer p {
     padding-left: 1rem;
     color: var(--text-soft);
     margin: 1rem 0;
+}
+
+/* ============================================================
+   Command palette (Cmd/Ctrl + K)
+   ============================================================ */
+.kbd-hint {
+    color: rgba(255,255,255,0.45);
+    font-size: 0.78rem;
+    margin-top: 0.3rem;
+    cursor: pointer;
+}
+.kbd-hint kbd {
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 5px;
+    padding: 1px 6px;
+    font-size: 0.85em;
+}
+
+.cmdk {
+    position: fixed;
+    inset: 0;
+    background: rgba(6,12,22,0.55);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 12vh 1rem 1rem;
+    z-index: 200;
+}
+.cmdk[hidden] { display: none; }
+.cmdk-box {
+    width: min(560px, 94vw);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+}
+.cmdk-box input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    color: var(--text);
+    font: inherit;
+    font-size: 1rem;
+    padding: 1rem 1.1rem;
+    outline: none;
+    border-bottom: 1px solid var(--border);
+}
+.cmdk-box ul {
+    list-style: none;
+    margin: 0;
+    padding: 0.4rem;
+    max-height: 52vh;
+    overflow-y: auto;
+}
+.cmdk-box li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 0.8rem;
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--text);
+}
+.cmdk-box li[aria-selected="true"] {
+    background: color-mix(in srgb, var(--accent) 16%, transparent);
+}
+.cmdk-box li .k {
+    margin-left: auto;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
 }
 
 /* ============================================================
