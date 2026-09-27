@@ -15,6 +15,7 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Published", name: "published", widget: "boolean", default: true, hint: "Turn OFF to keep it as a saved draft — committed to the repo but hidden from the live site. Turn ON to publish." }
       - { label: "Author", name: "author", widget: "string", default: "Federico Astolfi" }
       - { label: "Categories", name: "categories", widget: "string", required: false }
       - { label: "Body", name: "body", widget: "markdown" }

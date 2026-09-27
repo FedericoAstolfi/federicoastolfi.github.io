@@ -290,7 +290,7 @@
         posts.forEach((p) => {
           const w = countWords(p.body);
           const mins = Math.max(1, Math.round(w / 200));
-          const isDraft = String(p.fm.draft).toLowerCase() === 'true' || /\bTODO\b/.test(p.body);
+          const isDraft = String(p.fm.published).toLowerCase() === 'false' || String(p.fm.draft).toLowerCase() === 'true' || /\bTODO\b/.test(p.body);
           const title = p.fm.title || p.name;
           const d = p.fm.date ? new Date(p.fm.date) : null;
           if (!isDraft && d && (!lastDate || d > lastDate)) lastDate = d;
