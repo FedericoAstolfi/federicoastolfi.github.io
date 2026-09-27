@@ -81,13 +81,24 @@
 
     .postrow { display:flex; align-items:center; gap:0.7rem; padding:0.55rem 0;
       border-top:1px solid var(--border); font-size:0.9rem; }
-    .postrow:first-child { border-top:none; }
+    .postrow[hidden] { display:none; }
     .postrow .pt { flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
     .postrow .meta2 { color:var(--muted); font-size:0.8rem; white-space:nowrap; }
     .badge-draft { font-size:0.68rem; font-weight:700; color:#8a5d00;
       background:rgba(176,120,20,0.18); padding:2px 8px; border-radius:999px; }
     @media (prefers-color-scheme: dark){ .badge-draft{ color:#d9a441; background:rgba(217,164,65,0.18);} }
-    .reminder { margin:0 0 0.8rem; }
+    .posts-head { display:flex; align-items:center; gap:0.8rem; flex-wrap:wrap; margin-bottom:0.8rem; }
+    .seg { display:inline-flex; border:1px solid var(--border); border-radius:8px; overflow:hidden; }
+    .seg button { font:inherit; font-size:0.82rem; padding:0.35rem 0.75rem; cursor:pointer;
+      background:transparent; color:var(--muted); border:none; border-left:1px solid var(--border);
+      display:inline-flex; align-items:center; gap:0.35rem; transition:background .15s ease, color .15s ease; }
+    .seg button:first-child { border-left:none; }
+    .seg button b { font-weight:700; font-variant-numeric:tabular-nums; }
+    .seg button:hover { color:var(--ink); }
+    .seg button.active { background: color-mix(in srgb, var(--accent) 16%, transparent); color:var(--ink); }
+    .reminder { margin:0; font-size:0.85rem; }
+    .posts-head .reminder { margin-left:auto; }
+    .posts-empty { margin:0.6rem 0 0; font-size:0.88rem; }
 
     .modal { position:fixed; inset:0; background:rgba(6,12,22,0.62);
       display:flex; align-items:center; justify-content:center; padding:1rem; z-index:50; }
@@ -160,8 +171,16 @@
 
     <h2 class="section">Posts &amp; drafts</h2>
     <div class="panel">
-      <p class="reminder muted" id="reminder">Loading posts…</p>
+      <div class="posts-head">
+        <div class="seg" id="postFilter" role="tablist" aria-label="Filter posts">
+          <button type="button" data-f="all" class="active">All <b>0</b></button>
+          <button type="button" data-f="draft">Drafts <b>0</b></button>
+          <button type="button" data-f="published">Published <b>0</b></button>
+        </div>
+        <span class="reminder muted" id="reminder">Loading…</span>
+      </div>
       <div id="posts"></div>
+      <p class="posts-empty muted" id="postsEmpty" hidden></p>
     </div>
 
     <h2 class="section">Share &amp; SEO</h2>
@@ -286,25 +305,48 @@
       .then((posts) => {
         const box = document.getElementById('posts');
         box.innerHTML = '';
-        let lastDate = null;
+        let lastDate = null, drafts = 0;
         posts.forEach((p) => {
           const w = countWords(p.body);
           const mins = Math.max(1, Math.round(w / 200));
           const isDraft = String(p.fm.published).toLowerCase() === 'false' || String(p.fm.draft).toLowerCase() === 'true' || /\bTODO\b/.test(p.body);
+          if (isDraft) drafts++;
           const title = p.fm.title || p.name;
           const d = p.fm.date ? new Date(p.fm.date) : null;
           if (!isDraft && d && (!lastDate || d > lastDate)) lastDate = d;
           const row = document.createElement('div');
           row.className = 'postrow';
+          row.dataset.state = isDraft ? 'draft' : 'published';
           row.innerHTML = '<span class="pt">' + esc(title) + (isDraft ? ' <span class="badge-draft">draft</span>' : '') + '</span>' +
                           '<span class="meta2">' + w + ' words · ' + mins + ' min read</span>';
           box.appendChild(row);
         });
+
+        // Filter (All / Drafts / Published) with live counts
+        const counts = { all: posts.length, draft: drafts, published: posts.length - drafts };
+        const seg = document.getElementById('postFilter');
+        const empty = document.getElementById('postsEmpty');
+        seg.querySelectorAll('button').forEach((b) => { b.querySelector('b').textContent = counts[b.dataset.f]; });
+        function applyFilter(f) {
+          let shown = 0;
+          box.querySelectorAll('.postrow').forEach((r) => {
+            const vis = f === 'all' || r.dataset.state === f;
+            r.hidden = !vis; if (vis) shown++;
+          });
+          empty.hidden = shown > 0;
+          empty.textContent = f === 'draft' ? 'No drafts — all caught up.' : 'Nothing here yet.';
+        }
+        seg.querySelectorAll('button').forEach((b) => b.addEventListener('click', () => {
+          seg.querySelectorAll('button').forEach((x) => x.classList.toggle('active', x === b));
+          applyFilter(b.dataset.f);
+        }));
+        applyFilter('all');
+
         const rem = document.getElementById('reminder');
         if (lastDate) {
           const days = Math.floor((Date.now() - lastDate) / 86400000);
-          rem.textContent = 'Last published post: ' + (days <= 0 ? 'today' : days + ' day' + (days > 1 ? 's' : '') + ' ago') + '  ·  ' + posts.length + ' posts total.';
-        } else { rem.textContent = posts.length + ' posts.'; }
+          rem.textContent = 'Last published: ' + (days <= 0 ? 'today' : days + ' day' + (days > 1 ? 's' : '') + ' ago');
+        } else { rem.textContent = 'No published posts yet'; }
         rem.classList.remove('muted');
       })
       .catch(() => { document.getElementById('reminder').textContent = 'Could not load posts (GitHub rate-limited?).'; });
