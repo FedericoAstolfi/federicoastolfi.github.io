@@ -10,6 +10,16 @@ papers:
     links:
       - { label: "Phys. Rev. Research", url: "https://doi.org/10.1103/2w2v-hpst" }
       - { label: "arXiv:2512.13549", url: "https://arxiv.org/abs/2512.13549" }
+    bibtex: |
+      @article{astolfi2026pontryagin,
+        title   = {Pontryagin Maximum Principle for Rydberg-blockaded state-to-state transfers: A semi-analytic approach},
+        author  = {Astolfi, Federico Alberto and Jandura, Sven and Pupillo, Guido},
+        journal = {Phys. Rev. Research},
+        volume  = {8},
+        pages   = {023162},
+        year    = {2026},
+        doi     = {10.1103/2w2v-hpst}
+      }
 
 thesis:
   - year: 2024
@@ -19,6 +29,13 @@ thesis:
     abstract: "Hamiltonian actions of a Lie group on a symplectic manifold admit a moment map from the manifold to the dual of the Lie algebra. We study its application to Lagrangian orbits, giving an explicit formula for the moment map on Kähler Ricci Soliton manifolds and studying minimality of Lagrangian orbits when the acting Lie group is semisimple."
     links:
       - { label: "PDF", url: "/assets/MSc_Thesis_Astolfi.pdf" }
+    bibtex: |
+      @mastersthesis{astolfi2024minimal,
+        title  = {Minimal Lagrangian orbits of Hamiltonian actions over KE and KRS},
+        author = {Astolfi, Federico},
+        school = {Universit\`a degli Studi di Milano},
+        year   = {2024}
+      }
 
 talks:
   - date: "Jun 2026"

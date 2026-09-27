@@ -1374,6 +1374,115 @@ footer p {
     margin: 1rem 0;
 }
 
+/* Reading progress bar */
+.read-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0;
+    background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+    z-index: 150;
+}
+
+/* Copy button on code blocks */
+.post-content pre { position: relative; }
+.code-copy {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 6px;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+.post-content pre:hover .code-copy,
+.code-copy:focus { opacity: 1; }
+
+/* Prev / next post */
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+}
+.post-nav-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    text-decoration: none;
+    max-width: 48%;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.7rem 1rem;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.post-nav-link:hover { border-color: var(--accent); transform: translateY(-2px); }
+.post-nav-link.next { text-align: right; margin-left: auto; }
+.post-nav-link .dir { font-size: 0.75rem; color: var(--accent); font-weight: 600; }
+.post-nav-link .ttl { font-size: 0.92rem; }
+
+/* Cite / BibTeX */
+.cite { margin-top: 0.5rem; }
+.cite-toggle {
+    background: none;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 20px;
+    padding: 0.22rem 0.75rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+.cite-toggle:hover { background: color-mix(in srgb, var(--accent) 12%, transparent); }
+.cite-body { position: relative; margin-top: 0.5rem; }
+.cite-body pre {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.9rem 1rem;
+    overflow-x: auto;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    color: var(--text);
+    white-space: pre;
+}
+.cite-copy {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 6px;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+/* Syntax highlighting (kramdown + Rouge) — subtle, works in both themes */
+.highlight .c, .highlight .c1, .highlight .cm, .highlight .cd { color: #7c8a9c; font-style: italic; }
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr { color: #4f7fd6; }
+.highlight .o, .highlight .ow { color: var(--text-soft); }
+.highlight .s, .highlight .s1, .highlight .s2, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .se, .highlight .sh, .highlight .si, .highlight .sx, .highlight .sr, .highlight .ss { color: #3f9d6b; }
+.highlight .mi, .highlight .mf, .highlight .mh, .highlight .mo, .highlight .il { color: #c07a3e; }
+.highlight .nf, .highlight .fm { color: #6b8fd6; }
+.highlight .nc, .highlight .nn, .highlight .bp { color: #2fa3a3; }
+.highlight .nb, .highlight .no, .highlight .nv { color: #b06fb0; }
+.highlight .nt { color: #4f7fd6; }
+.highlight .na { color: #c07a3e; }
+.highlight .err { color: #e05a5a; }
+
 /* ============================================================
    Command palette (Cmd/Ctrl + K)
    ============================================================ */

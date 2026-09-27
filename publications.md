@@ -19,6 +19,13 @@ description: Publications, preprints, and conference talks by Federico Astolfi.
             {% if p.links %}<div class="pub-links">
                 {% for l in p.links %}<a href="{{ l.url }}" target="_blank" class="pub-link-btn">{{ l.label }}</a>{% endfor %}
             </div>{% endif %}
+            {% if p.bibtex %}<div class="cite">
+                <button class="cite-toggle" type="button">Cite (BibTeX) ▾</button>
+                <div class="cite-body" hidden>
+                    <button class="cite-copy" type="button">Copy</button>
+                    <pre>{{ p.bibtex | escape }}</pre>
+                </div>
+            </div>{% endif %}
         </div>
     </li>
 {% endfor %}
@@ -40,6 +47,13 @@ description: Publications, preprints, and conference talks by Federico Astolfi.
             <button class="pub-toggle">▸ Show more</button>{% endif %}
             {% if p.links %}<div class="pub-links">
                 {% for l in p.links %}<a href="{{ l.url }}" target="_blank" class="pub-link-btn">{{ l.label }}</a>{% endfor %}
+            </div>{% endif %}
+            {% if p.bibtex %}<div class="cite">
+                <button class="cite-toggle" type="button">Cite (BibTeX) ▾</button>
+                <div class="cite-body" hidden>
+                    <button class="cite-copy" type="button">Copy</button>
+                    <pre>{{ p.bibtex | escape }}</pre>
+                </div>
             </div>{% endif %}
         </div>
     </li>
@@ -64,3 +78,22 @@ description: Publications, preprints, and conference talks by Federico Astolfi.
     </div>
 {% endfor %}
 </div>
+
+<script>
+document.querySelectorAll('.cite-toggle').forEach(function (btn) {
+  var body = btn.nextElementSibling;
+  btn.addEventListener('click', function () {
+    var wasHidden = body.hasAttribute('hidden');
+    if (wasHidden) body.removeAttribute('hidden'); else body.setAttribute('hidden', '');
+    btn.textContent = wasHidden ? 'Cite (BibTeX) ▴' : 'Cite (BibTeX) ▾';
+  });
+});
+document.querySelectorAll('.cite-copy').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var pre = btn.nextElementSibling;
+    navigator.clipboard.writeText(pre.innerText).then(function () {
+      btn.textContent = 'Copied!'; setTimeout(function () { btn.textContent = 'Copy'; }, 1500);
+    }, function () { btn.textContent = 'Copy failed'; });
+  });
+});
+</script>
