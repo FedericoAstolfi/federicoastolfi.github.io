@@ -1483,6 +1483,32 @@ footer p {
 .highlight .na { color: #c07a3e; }
 .highlight .err { color: #e05a5a; }
 
+/* Theorem-like boxes for math posts (use <div class="thm theorem" markdown="1">) */
+.thm {
+    border-left: 4px solid var(--accent);
+    background: color-mix(in srgb, var(--accent) 6%, transparent);
+    border-radius: 0 10px 10px 0;
+    padding: 0.8rem 1.1rem;
+    margin: 1.3rem 0;
+}
+.thm > p:first-child { margin-top: 0; }
+.thm > p:last-child { margin-bottom: 0; }
+.thm > p:first-child > strong:first-child { color: var(--accent-strong); }
+.thm.definition { border-color: #2f9d6b; background: color-mix(in srgb, #2f9d6b 8%, transparent); }
+.thm.definition > p:first-child > strong:first-child { color: #2f9d6b; }
+.thm.lemma { border-color: #2fa3a3; background: color-mix(in srgb, #2fa3a3 8%, transparent); }
+.thm.lemma > p:first-child > strong:first-child { color: #2fa3a3; }
+.thm.proposition { border-color: #8a6fd0; background: color-mix(in srgb, #8a6fd0 8%, transparent); }
+.thm.proposition > p:first-child > strong:first-child { color: #8a6fd0; }
+.thm.corollary { border-color: #c07a3e; background: color-mix(in srgb, #c07a3e 8%, transparent); }
+.thm.corollary > p:first-child > strong:first-child { color: #c07a3e; }
+.thm.example { border-color: #c07a3e; background: transparent; }
+.thm.example > p:first-child > strong:first-child { color: #c07a3e; }
+.thm.remark { border-color: var(--text-muted); background: transparent; }
+.thm.remark > p:first-child > strong:first-child { color: var(--text-muted); }
+.thm.proof { border-color: var(--text-muted); background: transparent; }
+.thm.proof > p:first-child > strong:first-child { color: var(--text-muted); font-style: italic; }
+
 /* ============================================================
    Command palette (Cmd/Ctrl + K)
    ============================================================ */

@@ -57,7 +57,23 @@
       tex: {
         inlineMath: [['$', '$'], ['\\(', '\\)']],
         displayMath: [['$$', '$$'], ['\\[', '\\]']],
-        processEscapes: true
+        processEscapes: true,
+        macros: {
+          norm: ['\\left\\lVert #1\\right\\rVert', 1],
+          abs: ['\\left|#1\\right|', 1],
+          scal: ['\\left\\langle #1\\middle|#2\\right\\rangle', 2],
+          ket: ['\\left|#1\\right\\rangle', 1],
+          bra: ['\\left\\langle #1\\right|', 1],
+          Ree: '\\operatorname{Re}',
+          Imm: '\\operatorname{Im}',
+          dd: '\\mathrm{d}',
+          tr: '\\operatorname{tr}',
+          RR: '\\mathbb{R}',
+          R: '\\mathbb{R}',
+          CC: '\\mathbb{C}',
+          C: '\\mathcal{C}',
+          Lin: '\\mathcal{L}'
+        }
       },
       svg: {
         fontCache: 'global'
