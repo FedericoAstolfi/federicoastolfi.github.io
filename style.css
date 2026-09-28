@@ -236,6 +236,17 @@ main {
     text-decoration-color: white;
 }
 
+/* Thin dark outline on the hero text for legibility over the atoms */
+.topband h1 a,
+.topband nav a,
+.hero-intro h2,
+.hero-intro p,
+.hero-intro p a {
+    -webkit-text-stroke: 0.6px rgba(0, 0, 0, 0.5);
+    text-stroke: 0.6px rgba(0, 0, 0, 0.5);
+    paint-order: stroke fill;
+}
+
 .hero::before {
     content: '';
     position: absolute;
