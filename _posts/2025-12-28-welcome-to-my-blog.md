@@ -1,12 +1,13 @@
 ---
 title: Welcome to My Blog
 date: 2025-12-28 10:00:00 +0100
+published: true
 author: Federico Astolfi
 categories: blog introduction
 layout: post
 ---
 
-This blog is a space where I plan to write about things I find interesting — quantum computing, mathematics, and occasionally life as a PhD student.
+This blog is a space where I plan to write about things I find interesting — quantum computing, mathematics, and more generally whatever I feel like sharing on this webspace that is never to be read by anyone but its writer.
 
 ## What to expect
 
