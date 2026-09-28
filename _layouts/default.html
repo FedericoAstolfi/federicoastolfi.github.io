@@ -270,12 +270,16 @@
         });
     });
 
-    // Interactive hero: a drifting particle constellation (qubits + graph edges)
+    // Interactive hero: drifting, slowly rotating atoms linked by faint edges
     (function () {
         const canvas = document.querySelector('.hero-canvas');
         if (!canvas) return;
         const band = canvas.parentElement;
         const ctx = canvas.getContext('2d');
+        const atom = new Image();
+        let ready = false;
+        atom.addEventListener('load', () => { ready = true; if (reduceMotion) frame(); });
+        atom.src = '/images/nuclear-atom.svg';
         let w = 0, h = 0, parts = [], raf = null;
         const mouse = { x: -9999, y: -9999 };
 
@@ -285,34 +289,53 @@
             canvas.width = w * dpr; canvas.height = h * dpr;
             canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-            const n = Math.max(14, Math.min(72, Math.round(w * h / 13000)));
+            const n = Math.max(6, Math.min(22, Math.round(w * h / 42000)));
             parts = Array.from({ length: n }, () => ({
                 x: Math.random() * w, y: Math.random() * h,
-                vx: (Math.random() - 0.5) * 0.22, vy: (Math.random() - 0.5) * 0.22,
-                r: Math.random() * 1.6 + 0.7
+                vx: (Math.random() - 0.5) * 0.17, vy: (Math.random() - 0.5) * 0.17,
+                size: 16 + Math.random() * 22,          // small, varied
+                ang: Math.random() * Math.PI * 2,
+                spin: (Math.random() - 0.5) * 0.008,    // slow rotation
+                alpha: 0.4 + Math.random() * 0.28
             }));
         }
         function frame() {
             ctx.clearRect(0, 0, w, h);
             for (const p of parts) {
-                p.x += p.vx; p.y += p.vy;
+                p.x += p.vx; p.y += p.vy; p.ang += p.spin;
                 if (p.x < 0 || p.x > w) p.vx *= -1;
                 if (p.y < 0 || p.y > h) p.vy *= -1;
                 const dx = p.x - mouse.x, dy = p.y - mouse.y, d = Math.hypot(dx, dy);
-                if (d < 110 && d > 0) { const f = (1 - d / 110) * 0.8; p.x += dx / d * f; p.y += dy / d * f; }
+                if (d < 120 && d > 0) { const f = (1 - d / 120) * 0.7; p.x += dx / d * f; p.y += dy / d * f; }
             }
+            // faint edges, shortened so they stop before the atoms' orbitals
+            ctx.lineWidth = 1;
             for (let i = 0; i < parts.length; i++) {
                 for (let j = i + 1; j < parts.length; j++) {
-                    const a = parts[i], b = parts[j], d = Math.hypot(a.x - b.x, a.y - b.y);
-                    if (d < 120) {
-                        ctx.strokeStyle = 'rgba(255,255,255,' + (0.09 * (1 - d / 120)).toFixed(3) + ')';
-                        ctx.lineWidth = 1;
-                        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+                    const a = parts[i], b = parts[j];
+                    const dx = b.x - a.x, dy = b.y - a.y, d = Math.hypot(dx, dy);
+                    const gapA = a.size * 0.55, gapB = b.size * 0.55;
+                    if (d < 165 && d > gapA + gapB + 8) {
+                        const ux = dx / d, uy = dy / d;
+                        ctx.strokeStyle = 'rgba(255,255,255,' + (0.12 * (1 - d / 165)).toFixed(3) + ')';
+                        ctx.beginPath();
+                        ctx.moveTo(a.x + ux * gapA, a.y + uy * gapA);
+                        ctx.lineTo(b.x - ux * gapB, b.y - uy * gapB);
+                        ctx.stroke();
                     }
                 }
             }
-            ctx.fillStyle = 'rgba(255,255,255,0.55)';
-            for (const p of parts) { ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.283); ctx.fill(); }
+            // rotating atoms on top
+            if (ready) {
+                for (const p of parts) {
+                    ctx.save();
+                    ctx.globalAlpha = p.alpha;
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate(p.ang);
+                    ctx.drawImage(atom, -p.size / 2, -p.size / 2, p.size, p.size);
+                    ctx.restore();
+                }
+            }
             if (!reduceMotion) raf = requestAnimationFrame(frame);
         }
         build(); frame();
