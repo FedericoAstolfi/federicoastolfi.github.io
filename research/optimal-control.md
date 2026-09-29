@@ -2,6 +2,7 @@
 title: Quantum Optimal Control
 layout: default
 permalink: /research/optimal-control/
+published: false
 line_id: optimal-control
 description: Time-optimal control of neutral-atom qubits in the Rydberg-blockade regime.
 ---

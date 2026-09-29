@@ -2,6 +2,7 @@
 title: Research
 layout: default
 permalink: /research/
+published: false
 description: Research lines of Federico Astolfi — quantum optimal control and quantum error correction.
 ---
 

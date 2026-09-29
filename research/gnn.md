@@ -2,6 +2,7 @@
 title: QEC · GNN Decoding
 layout: default
 permalink: /research/gnn/
+published: false
 line_id: gnn
 description: Decoding the surface code with graph neural networks.
 ---
