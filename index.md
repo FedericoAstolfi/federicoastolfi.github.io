@@ -4,41 +4,32 @@ layout: default
 ---
 
 <section class="content">
-    <h3>Research Projects</h3>
-    <div class="carousel">
+    <h3>Latest news</h3>
+    <div class="carousel news-carousel">
         <div class="carousel-track">
-            <div class="carousel-slide">
-                <img src="/images/project-rydberg.svg" alt="Quantum Optimal Control" class="carousel-img" loading="lazy" decoding="async">
+        {% for n in site.data.news.items %}
+            <div class="carousel-slide" style="background-image:url('{{ n.image | relative_url }}')">
                 <div class="carousel-body">
-                    <h4>Pontryagin Maximum Principle for Rydberg-blockaded state-to-state transfers</h4>
-                    <p>We study time-optimal state-to-state control for two- and multi-qubit operations motivated by neutral-atom quantum processors within the Rydberg blockade regime.</p>
-                    <a href="https://doi.org/10.1103/2w2v-hpst" target="_blank">→ Phys. Rev. Research 8, 023162</a>
+                    <div class="news-meta">
+                        {% if n.badge %}<span class="news-badge {{ n.badge_class }}">{{ n.badge }}</span>{% endif %}
+                        {% if n.date %}<span class="news-date">{{ n.date }}</span>{% endif %}
+                    </div>
+                    <h4>{{ n.title }}</h4>
+                    {% if n.venue %}<p class="news-venue">{{ n.venue }}</p>{% endif %}
+                    {% if n.text %}<p>{{ n.text }}</p>{% endif %}
+                    {% if n.link %}<a href="{{ n.link | relative_url }}"{% if n.link contains '//' %} target="_blank"{% endif %}>{{ n.link_label | default: 'Read more' }} →</a>{% endif %}
                 </div>
             </div>
-            <div class="carousel-slide">
-                <img src="/images/project-gnn.svg" alt="Quantum Error Correction" class="carousel-img" loading="lazy" decoding="async">
-                <div class="carousel-body">
-                    <h4>Decoding the Surface Code with Graph Neural Networks</h4>
-                    <p>A decoding strategy based on Graph Neural Networks that exploits the graph structure of the detector error model for the Surface Code to perform error correction.</p>
-                    <a href="/publications">→ Upcoming talk at APS DAMOP 2026</a>
-                </div>
-            </div>
-            <div class="carousel-slide">
-                <img src="/images/project-placeholder.svg" alt="Coming soon" class="carousel-img" loading="lazy" decoding="async">
-                <div class="carousel-body">
-                    <h4>New project coming soon</h4>
-                    <p>Stay tuned for updates on upcoming research.</p>
-                </div>
-            </div>
+        {% endfor %}
         </div>
         <div class="carousel-nav">
             <button class="carousel-btn carousel-prev">&#8249;</button>
             <button class="carousel-btn carousel-next">&#8250;</button>
         </div>
         <div class="carousel-dots">
-            <button class="carousel-dot active" data-index="0"></button>
-            <button class="carousel-dot" data-index="1"></button>
-            <button class="carousel-dot" data-index="2"></button>
+        {% for n in site.data.news.items %}
+            <button class="carousel-dot{% if forloop.first %} active{% endif %}" data-index="{{ forloop.index0 }}"></button>
+        {% endfor %}
         </div>
     </div>
 </section>

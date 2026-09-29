@@ -1,0 +1,33 @@
+# Home "Latest news" carousel. Add an item at the top to post news.
+# badge_class: b-pub (green) · b-pre (blue) · b-prep (amber)
+# image: full-bleed background of the card (a paper figure works great)
+
+items:
+  - date: "2026"
+    badge: "Published"
+    badge_class: "b-pub"
+    title: "Pontryagin Maximum Principle for Rydberg-blockaded transfers"
+    venue: "Phys. Rev. Research 8, 023162 (2026)"
+    text: "Time-optimal state-to-state control for neutral-atom qubits, via a semi-analytic Pontryagin approach."
+    link: "https://doi.org/10.1103/2w2v-hpst"
+    link_label: "Read the paper"
+    image: "/images/project-rydberg.svg"
+
+  - date: "Jun 2026"
+    badge: "Talk"
+    badge_class: "b-pre"
+    title: "Decoding the Surface Code with Graph Neural Networks"
+    venue: "APS DAMOP 2026 — Providence, RI"
+    text: "Contributed talk on a GNN decoder that reads the detector-error-model graph of the surface code."
+    link: "/research/gnn/"
+    link_label: "About this line"
+    image: "/images/project-gnn.svg"
+
+  - date: "Soon"
+    badge: "In preparation"
+    badge_class: "b-prep"
+    title: "Next paper in quantum optimal control"
+    text: "A new result in the optimal-control line — coming soon."
+    link: "/research/optimal-control/"
+    link_label: "Follow the story"
+    image: "/images/project-placeholder.svg"
