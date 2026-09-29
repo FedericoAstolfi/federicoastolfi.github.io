@@ -219,6 +219,11 @@ main {
     margin-bottom: 1.1rem;
     min-height: 1.2em;
     text-wrap: balance;
+    animation: heroRise 0.7s ease both;
+}
+@keyframes heroRise {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 .hero-intro p {
     font-size: 1.05rem;
@@ -226,6 +231,7 @@ main {
     max-width: 650px;
     margin: 0 auto;
     line-height: 1.85;
+    animation: heroRise 0.7s ease 0.1s both;
 }
 .hero-intro p a {
     color: white;

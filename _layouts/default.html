@@ -188,23 +188,7 @@
         });
     }
 
-    // Typewriter effect for hero title (skipped when reduced motion is requested)
-    const heroTitle = document.querySelector('.hero-intro h2');
-    if (heroTitle && !reduceMotion) {
-        const text = heroTitle.textContent.trim();
-        heroTitle.textContent = '';
-        heroTitle.classList.add('typewriter-active');
-        let i = 0;
-        const type = () => {
-            if (i < text.length) {
-                heroTitle.textContent += text[i++];
-                setTimeout(type, 75);
-            } else {
-                heroTitle.classList.remove('typewriter-active');
-            }
-        };
-        setTimeout(type, 350);
-    }
+    // (Hero title entrance is a pure-CSS fade-in — no per-character reflow.)
 
     document.querySelectorAll('.pub-toggle').forEach(btn => {
         const abstract = btn.previousElementSibling;
