@@ -1,11 +1,11 @@
 # Home "Latest news" carousel. Add an item at the top to post news.
-# badge_class: b-pub (green) · b-pre (blue) · b-prep (amber)
+# badge_class: n-pub (green) · n-pre (blue) · n-prep (amber)
 # image: full-bleed background of the card (a paper figure works great)
 
 items:
   - date: "2026"
     badge: "Published"
-    badge_class: "b-pub"
+    badge_class: "n-pub"
     title: "Pontryagin Maximum Principle for Rydberg-blockaded transfers"
     venue: "Phys. Rev. Research 8, 023162 (2026)"
     text: "Time-optimal state-to-state control for neutral-atom qubits, via a semi-analytic Pontryagin approach."
@@ -15,7 +15,7 @@ items:
 
   - date: "Jun 2026"
     badge: "Talk"
-    badge_class: "b-pre"
+    badge_class: "n-pre"
     title: "Decoding the Surface Code with Graph Neural Networks"
     venue: "APS DAMOP 2026 — Providence, RI"
     text: "Contributed talk on a GNN decoder that reads the detector-error-model graph of the surface code."
