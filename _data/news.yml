@@ -21,7 +21,7 @@ items:
     text: "Contributed talk on a GNN decoder that reads the detector-error-model graph of the surface code."
     link: "/research/gnn/"
     link_label: "About this line"
-    image: "/images/project-gnn.svg"
+    image: "/images/paper-gnn.jpg"
 
   - date: "Soon"
     badge: "In preparation"
