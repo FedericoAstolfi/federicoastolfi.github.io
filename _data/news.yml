@@ -11,7 +11,7 @@ items:
     text: "Time-optimal state-to-state control for neutral-atom qubits, via a semi-analytic Pontryagin approach."
     link: "https://doi.org/10.1103/2w2v-hpst"
     link_label: "Read the paper"
-    image: "/images/project-rydberg.svg"
+    image: "/images/paper-pmp.jpg"
 
   - date: "Jun 2026"
     badge: "Talk"
