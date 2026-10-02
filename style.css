@@ -519,7 +519,7 @@ main {
     flex: 0 0 42px;
     border-radius: 50%;
     border: none;
-    background: rgba(255,255,255,0.92);
+    background: rgba(255,255,255,0.62);
     color: #1e3f70;
     font-size: 1.25rem;
     cursor: pointer;
@@ -631,6 +631,7 @@ main {
 .news-badge.n-pub  { color: #fff; background: rgba(26,127,75,0.92); }
 .news-badge.n-pre  { color: #fff; background: rgba(42,92,173,0.92); }
 .news-badge.n-prep { color: #fff; background: rgba(176,120,20,0.94); }
+.news-badge.n-talk { color: #fff; background: rgba(150,90,200,0.92); }
 
 @media (max-width: 768px) {
     .news-carousel .carousel-slide { height: 300px; }

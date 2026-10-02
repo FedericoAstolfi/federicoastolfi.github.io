@@ -13,6 +13,16 @@ items:
     link_label: "Read the preprint"
     image: "/images/paper-gnn.jpg"
 
+  - date: "Jun 2026"
+    badge: "Talk"
+    badge_class: "n-talk"
+    title: "Decoding the Surface Code with Graph Neural Networks"
+    venue: "APS DAMOP 2026 — Providence, RI"
+    text: "Contributed talk on a GNN decoder for the surface code."
+    link: "/publications"
+    link_label: "See the talk"
+    image: "/images/paper-talk.jpg"
+
   - date: "2026"
     badge: "Published"
     badge_class: "n-pub"
