@@ -3,6 +3,16 @@
 # image: full-bleed background of the card (a paper figure works great)
 
 items:
+  - date: "Oct 2026"
+    badge: "Preprint"
+    badge_class: "n-pre"
+    title: "A Code-Agnostic GNN Decoder from the Detection Error Model"
+    venue: "arXiv:2610.01683 (2026)"
+    text: "POLYMECHANON: a graph neural network that decodes any stabilizer code from its detection error model alone."
+    link: "https://arxiv.org/abs/2610.01683"
+    link_label: "Read the preprint"
+    image: "/images/paper-gnn.jpg"
+
   - date: "2026"
     badge: "Published"
     badge_class: "n-pub"
@@ -12,13 +22,3 @@ items:
     link: "https://doi.org/10.1103/2w2v-hpst"
     link_label: "Read the paper"
     image: "/images/paper-pmp.jpg"
-
-  - date: "Jun 2026"
-    badge: "Talk"
-    badge_class: "n-pre"
-    title: "Decoding the Surface Code with Graph Neural Networks"
-    venue: "APS DAMOP 2026 — Providence, RI"
-    text: "Contributed talk on a GNN decoder that reads the detector-error-model graph of the surface code."
-    link: "/publications"
-    link_label: "See the talk"
-    image: "/images/paper-gnn.jpg"

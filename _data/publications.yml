@@ -3,6 +3,21 @@
 
 papers:
   - year: 2026
+    title: "A Code-Agnostic Graph Neural Network Decoder from the Detection Error Model"
+    authors: "Federico Alberto Astolfi, Guido Pupillo"
+    venue: "arXiv:2610.01683 (2026)"
+    abstract: "We introduce POLYMECHANON, a graph neural network decoder for quantum error correction that takes only the detection error model as input, represented as a tripartite graph of detectors, error mechanisms, and logical observables. Features derive from the code itself rather than architectural choices, so a single trained decoder applies across stabilizer codes under compatible noise. It outperforms correlated MWPM on rotated surface codes, matches or exceeds BP+OSD on qLDPC codes, decodes in time independent of the physical error rate, generalizes to unseen codes, and supports confidence-based post-selection."
+    links:
+      - { label: "arXiv:2610.01683", url: "https://arxiv.org/abs/2610.01683" }
+    bibtex: |
+      @article{astolfi2026codeagnostic,
+        title   = {A Code-Agnostic Graph Neural Network Decoder from the Detection Error Model},
+        author  = {Astolfi, Federico Alberto and Pupillo, Guido},
+        journal = {arXiv preprint arXiv:2610.01683},
+        year    = {2026}
+      }
+
+  - year: 2026
     title: "Pontryagin Maximum Principle for Rydberg-blockaded state-to-state transfers: A semi-analytic approach"
     authors: "Federico Alberto Astolfi, Sven Jandura, Guido Pupillo"
     venue: "Phys. Rev. Research 8, 023162 (2026)"
