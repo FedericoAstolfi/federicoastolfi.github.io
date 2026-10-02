@@ -634,8 +634,11 @@ main {
 .news-badge.n-talk { color: #fff; background: rgba(150,90,200,0.92); }
 
 @media (max-width: 768px) {
-    .news-carousel .carousel-slide { height: 300px; }
-    .news-carousel .carousel-nav { height: 300px; }
+    .news-carousel .carousel-slide { height: 340px; background-position: right center; }
+    .news-carousel .carousel-slide::before {
+        background: linear-gradient(to top, rgba(9,16,28,0.96) 0%, rgba(9,16,28,0.7) 48%, rgba(9,16,28,0.25) 100%);
+    }
+    .news-carousel .carousel-nav { height: 340px; }
     .news-carousel .carousel-body { padding: 1.2rem 1.2rem 1.3rem; }
     .news-carousel .carousel-body h4 { font-size: 1.12rem; }
 }
