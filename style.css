@@ -932,6 +932,16 @@ footer p {
         gap: 0.3rem;
     }
 
+    /* In column flex, align-items:flex-start lets a child size to its
+       content (the BibTeX <pre> with white-space:pre), which overflows
+       the viewport. A definite width pins the child to the container so
+       the abstract wraps and the <pre> scrolls inside its own box. */
+    .pub-details,
+    .talk-details {
+        width: 100%;
+        min-width: 0;
+    }
+
     .edu-item {
         flex-direction: column;
         gap: 0.3rem;
