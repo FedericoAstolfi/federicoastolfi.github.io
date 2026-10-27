@@ -671,6 +671,7 @@ main {
 
 .pub-details {
     flex: 1;
+    min-width: 0;
     line-height: 1.6;
 }
 
@@ -979,6 +980,7 @@ footer p {
 
 .talk-details {
     flex: 1;
+    min-width: 0;
     line-height: 1.7;
 }
 
@@ -1540,6 +1542,7 @@ footer p {
     border-radius: 8px;
     padding: 0.9rem 1rem;
     overflow-x: auto;
+    max-width: 100%;
     font-size: 0.82rem;
     line-height: 1.5;
     font-family: ui-monospace, Menlo, Consolas, monospace;
