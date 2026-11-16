@@ -275,7 +275,9 @@
             canvas.width = w * dpr; canvas.height = h * dpr;
             canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-            const n = Math.max(6, Math.min(22, Math.round(w * h / 42000)));
+            let n = Math.max(6, Math.min(22, Math.round(w * h / 42000)));
+            // the band is short on inner pages: size the snowfall by width so it stays visible
+            if (SNOW) n = Math.max(n, Math.min(22, Math.round(w / 70)));
             parts = Array.from({ length: n }, () => ({
                 x: Math.random() * w, y: Math.random() * h,
                 vx: (Math.random() - 0.5) * 0.17, vy: (Math.random() - 0.5) * 0.17,
