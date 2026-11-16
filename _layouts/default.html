@@ -262,7 +262,8 @@
         const atom = new Image();
         let ready = false;
         atom.addEventListener('load', () => { ready = true; if (reduceMotion) frame(); });
-        atom.src = '/images/nuclear-atom.svg';
+        // Seasonal: snowflake for the holidays; switch back to nuclear-atom.svg afterwards
+        atom.src = '/images/snowflake.svg';
         let w = 0, h = 0, parts = [], raf = null;
         const mouse = { x: -9999, y: -9999 };
 
