@@ -266,16 +266,26 @@
         // switch back to nuclear-atom.svg afterwards
         const SNOW = true;
         atom.src = SNOW ? '/images/snowflake.svg' : '/images/nuclear-atom.svg';
-        let w = 0, h = 0, parts = [], raf = null;
+        // snow covers the whole viewport on every page, above the content but
+        // transparent to clicks; the atoms stay inside the hero band
+        if (SNOW) {
+            document.body.appendChild(canvas);
+            canvas.style.cssText = 'position:fixed;inset:0;z-index:40;pointer-events:none;';
+        }
+        let w = 0, h = 0, parts = [], raf = null, seededW = -1;
         const mouse = { x: -9999, y: -9999 };
 
         function build() {
             const dpr = Math.min(window.devicePixelRatio || 1, 2);
-            w = band.clientWidth; h = band.clientHeight;
+            if (SNOW) { w = window.innerWidth; h = window.innerHeight; }
+            else { w = band.clientWidth; h = band.clientHeight; }
             canvas.width = w * dpr; canvas.height = h * dpr;
             canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-            const n = Math.max(6, Math.min(22, Math.round(w * h / 42000)));
+            // mobile URL bars resize the height on scroll: keep the flakes, only reseed on width changes
+            if (SNOW && w === seededW) return;
+            seededW = w;
+            const n = Math.max(6, Math.min(SNOW ? 28 : 22, Math.round(w * h / 42000)));
             parts = Array.from({ length: n }, () => ({
                 x: Math.random() * w, y: Math.random() * h,
                 vx: (Math.random() - 0.5) * 0.17, vy: (Math.random() - 0.5) * 0.17,
@@ -306,9 +316,9 @@
                 const dx = p.x - mouse.x, dy = p.y - mouse.y, d = Math.hypot(dx, dy);
                 if (d < 120 && d > 0) { const f = (1 - d / 120) * 0.7; p.x += dx / d * f; p.y += dy / d * f; }
             }
-            // faint edges, shortened so they stop before the atoms' orbitals
+            // faint edges, shortened so they stop before the atoms' orbitals (not for snow)
             ctx.lineWidth = 1;
-            for (let i = 0; i < parts.length; i++) {
+            for (let i = 0; i < (SNOW ? 0 : parts.length); i++) {
                 for (let j = i + 1; j < parts.length; j++) {
                     const a = parts[i], b = parts[j];
                     const dx = b.x - a.x, dy = b.y - a.y, d = Math.hypot(dx, dy);
@@ -328,6 +338,8 @@
                 for (const p of parts) {
                     ctx.save();
                     ctx.globalAlpha = Math.max(0, Math.min(1, p.alpha + 0.08 * Math.sin(p.phase)));
+                    // dark halo keeps white flakes visible on the light theme's white pages
+                    if (SNOW) { ctx.shadowColor = 'rgba(15,32,66,0.6)'; ctx.shadowBlur = 3; }
                     ctx.translate(p.x, p.y);
                     ctx.rotate(p.ang);
                     ctx.drawImage(atom, -p.size / 2, -p.size / 2, p.size, p.size);
@@ -338,7 +350,7 @@
         }
         build(); frame();
         window.addEventListener('resize', () => { build(); if (reduceMotion) frame(); });
-        window.addEventListener('mousemove', (e) => { const r = band.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; });
+        window.addEventListener('mousemove', (e) => { const r = SNOW ? { left: 0, top: 0 } : band.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; });
         window.addEventListener('mouseout', () => { mouse.x = -9999; mouse.y = -9999; });
     })();
 
