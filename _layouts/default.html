@@ -262,8 +262,10 @@
         const atom = new Image();
         let ready = false;
         atom.addEventListener('load', () => { ready = true; if (reduceMotion) frame(); });
-        // Seasonal: snowflake for the holidays; switch back to nuclear-atom.svg afterwards
-        atom.src = '/images/snowflake.svg';
+        // Seasonal: falling snowflakes for the holidays; set SNOW = false and
+        // switch back to nuclear-atom.svg afterwards
+        const SNOW = true;
+        atom.src = SNOW ? '/images/snowflake.svg' : '/images/nuclear-atom.svg';
         let w = 0, h = 0, parts = [], raf = null;
         const mouse = { x: -9999, y: -9999 };
 
@@ -284,13 +286,23 @@
                 phase: Math.random() * Math.PI * 2,
                 pulse: 0.010 + Math.random() * 0.010    // gentle breathing of the glow
             }));
+            // snow: bigger flakes are "closer", so they fall faster
+            if (SNOW) for (const p of parts) { p.vy = 0.22 + (p.size - 16) / 22 * 0.3; p.vx *= 0.5; }
         }
         function frame() {
             ctx.clearRect(0, 0, w, h);
             for (const p of parts) {
-                p.x += p.vx; p.y += p.vy; p.ang += p.spin; p.phase += p.pulse;
-                if (p.x < 0 || p.x > w) p.vx *= -1;
-                if (p.y < 0 || p.y > h) p.vy *= -1;
+                p.ang += p.spin; p.phase += p.pulse;
+                if (SNOW) {
+                    // fall with a soft side-to-side sway; respawn above the top edge
+                    p.y += p.vy; p.x += p.vx + Math.sin(p.phase * 0.6) * 0.25;
+                    if (p.y > h + p.size) { p.y = -p.size; p.x = Math.random() * w; }
+                    if (p.x < -p.size) p.x = w + p.size; else if (p.x > w + p.size) p.x = -p.size;
+                } else {
+                    p.x += p.vx; p.y += p.vy;
+                    if (p.x < 0 || p.x > w) p.vx *= -1;
+                    if (p.y < 0 || p.y > h) p.vy *= -1;
+                }
                 const dx = p.x - mouse.x, dy = p.y - mouse.y, d = Math.hypot(dx, dy);
                 if (d < 120 && d > 0) { const f = (1 - d / 120) * 0.7; p.x += dx / d * f; p.y += dy / d * f; }
             }
